@@ -6,7 +6,7 @@ import http from 'http';
 import crypto from 'crypto';
 
 const TRUSTED_CLIENT_TOKEN = '6A5AA1D4EAFF4E9FB37E23D68491D6F4';
-const CHROMIUM_FULL_VERSION = '130.0.2849.68';
+const CHROMIUM_FULL_VERSION = '143.0.3650.75';
 const SEC_MS_GEC_VERSION = `1-${CHROMIUM_FULL_VERSION}`;
 const HOST = 'speech.platform.bing.com';
 const PATH = '/consumer/speech/synthesize/readaloud/edge/v1';
@@ -82,7 +82,7 @@ function connect(opts) {
         Pragma: 'no-cache',
         'Cache-Control': 'no-cache',
         Origin: 'chrome-extension://jdiccldimpdaibmpdkjnbmckianbfold',
-        'User-Agent': `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0`,
+        'User-Agent': `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0`,
         'Accept-Language': 'en-US,en;q=0.9',
         Cookie: `muid=${crypto.randomBytes(16).toString('hex').toUpperCase()};`
       }
