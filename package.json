@@ -1,0 +1,14 @@
+{
+  "name": "ai-video-studio-web",
+  "version": "1.7.0",
+  "private": true,
+  "description": "AI Video Studio - web sürümü",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ai-video-studio
+    runtime: node
+    plan: free
+    buildCommand: echo "kurulum gerekmiyor"
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
