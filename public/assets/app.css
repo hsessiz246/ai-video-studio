@@ -191,3 +191,66 @@ select.fx-input{cursor:pointer}
 .fx-stats small{color:#8b9098;font-size:11px}
 .fx-switch-btn{position:fixed;left:50%;top:84px;transform:translateX(-50%);z-index:200;box-shadow:0 6px 20px #0008;border:1px solid #ff7a1a80;background:rgba(30,20,12,.92);color:#ffd7b5;border-radius:10px;padding:8px 13px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer}
 @media (max-width:900px){.fx-drawer{top:auto;height:62%;left:8px;right:8px;width:auto}.fx-monitor{display:none}.fx-dock{bottom:8px;flex-wrap:wrap;justify-content:center}.fx-root.has-panel .fx-dock{display:none}.fx-hint{display:none}}
+/* ===== v2.0: yapay zekâ paneli + üretim panosu ===== */
+.fx-drawer:has(.ai-body){width:460px}
+.ai-body{gap:14px}
+.ai-sec{border:1px solid #ffffff12;border-radius:12px;padding:12px;background:#ffffff05;display:flex;flex-direction:column;gap:9px}
+.ai-sec h4{margin:0;font-size:13.5px;font-weight:650;display:flex;flex-direction:column;gap:2px}
+.ai-sec h4 small{font-weight:400;color:#7d828a;font-size:11.5px}
+.ai-sub{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#9aa0a8;font-weight:700;margin-top:4px}
+.ai-opts{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.ai-opt{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:8px 10px;border-radius:9px;border:1px solid #ffffff14;background:#0c0f13;color:#c9cac3;font:inherit;cursor:pointer}
+.ai-opt b{font-size:12.5px;color:var(--fx-white)}
+.ai-opt small{font-size:10.5px;color:#7d828a;line-height:1.3}
+.ai-opt.on{border-color:var(--fx-amber);background:#ff7a1a14;box-shadow:0 0 0 1px #ff7a1a55}
+.ai-key{display:flex;gap:6px}
+.ai-key .fx-input{flex:1;font-family:ui-monospace,Menlo,monospace;font-size:12px}
+.ai-key a.fx-btn{text-decoration:none;display:inline-flex;align-items:center}
+.fx-switch span b{color:var(--fx-white)}
+.fx-switch{align-items:flex-start}
+.fx-switch input{margin-top:2px;flex-shrink:0}
+.fx-switch span{color:#a9aca6;font-size:12.5px;line-height:1.4}
+.fx-engines{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:#7d828a;padding:8px 10px;border:1px dashed #ffffff18;border-radius:9px}
+.fx-engines b{color:#ffd7b5;font-weight:600}
+.fx-link{border:0;background:none;color:var(--fx-amber);font:inherit;cursor:pointer;padding:0;text-decoration:underline}
+.fx-btn.accent{border-color:#ff7a1a90;color:#ffd7b5;background:#ff7a1a1a}
+.fx-badge{position:absolute;top:8px;left:8px;background:#ff3b30;color:#fff;font-size:10px;font-weight:800;letter-spacing:1px;padding:3px 7px;border-radius:6px}
+.fx-proj{margin-left:14px;pointer-events:auto;display:flex;align-items:center;gap:8px;border:1px solid #ffffff17;background:rgba(22,25,30,.85);color:var(--fx-white);border-radius:9px;padding:5px 10px;font:inherit;font-size:11.5px;letter-spacing:0;text-transform:none;cursor:pointer;max-width:520px}
+.fx-proj small{color:#8b9098;font-size:10.5px;white-space:nowrap}
+.fx-proj em,.pb-root .pill{font-style:normal;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;background:#ffffff10;color:#a9aca6;white-space:nowrap}
+.fx-proj em.tarih,.pb-root .pill.tarih{background:#3a2a17;color:#e9a85a}
+.fx-proj em.icat,.pb-root .pill.icat{background:#2f2245;color:#c3a2f5}
+.fx-proj em.cocuk,.pb-root .pill.cocuk{background:#123a35;color:#4fd1bd}
+.fx-heading{pointer-events:auto}
+.pb-root{position:absolute;inset:0;z-index:20;background:rgba(8,10,13,.97);backdrop-filter:blur(8px);display:flex;flex-direction:column;animation:fxIn .18s ease-out}
+.pb-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;padding:22px 24px 14px}
+.pb-head small{font-size:10px;letter-spacing:1.8px;color:var(--fx-amber);font-weight:700}
+.pb-head h2{margin:4px 0 6px;font-size:24px;font-weight:700;letter-spacing:-.4px}
+.pb-stats{display:flex;gap:16px;font-size:12px;color:#8b9098}
+.pb-stats b{color:var(--fx-white);font-family:ui-monospace,Menlo,monospace;margin-right:3px}
+.pb-stats .late,.pb-stats .late b{color:#ff8a80}
+.pb-empty{margin:0 24px 12px;padding:14px 16px;border:1px dashed #ffffff22;border-radius:12px;color:#a9aca6;font-size:13px;line-height:1.5}
+.pb-cols{flex:1;min-height:0;display:grid;grid-template-columns:repeat(6,minmax(210px,1fr));gap:10px;padding:0 24px 22px;overflow:auto}
+.pb-col{background:#12161b;border:1px solid #ffffff0d;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:8px;min-height:0;overflow-y:auto}
+.pb-col.drop{outline:1px dashed #ff7a1a55}
+.pb-col h3{margin:2px 4px 4px;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:#8b9098;display:flex;justify-content:space-between;font-weight:700}
+.pb-col h3 span{font-family:ui-monospace,Menlo,monospace}
+.pb-card{background:#1a1f26;border-radius:10px;padding:10px 11px;border-left:3px solid #e9a85a;display:flex;flex-direction:column;gap:7px;cursor:pointer;transition:background .12s}
+.pb-card:hover{background:#212730}
+.pb-card.icat{border-left-color:#c3a2f5}
+.pb-card.cocuk{border-left-color:#4fd1bd}
+.pb-card.active{box-shadow:0 0 0 1px var(--fx-amber)}
+.pb-card b{font-size:12.5px;font-weight:600;line-height:1.35;overflow-wrap:anywhere}
+.pb-meta{display:flex;flex-wrap:wrap;gap:4px}
+.pb-foot{display:flex;justify-content:space-between;align-items:center}
+.pb-date{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:#8b9098}
+.pb-date.late{color:#ff8a80}
+.pb-go{border:1px solid #ff7a1a70;background:#ff7a1a14;color:#ffd7b5;border-radius:7px;padding:3px 9px;font:inherit;font-size:11px;font-weight:600;cursor:pointer}
+.pb-go:hover{background:var(--fx-amber);color:#1b1206}
+.pb-none{color:#5d626a;font-size:12px;padding:6px 4px}
+.pb-modal{position:absolute;inset:0;z-index:30;background:#000a;display:grid;place-items:center;padding:16px}
+.pb-form{width:min(560px,100%);max-height:100%;overflow-y:auto;background:#171b21;border:1px solid #ffffff17;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px;box-shadow:0 30px 80px #000a}
+.pb-form h3{margin:0;font-size:18px}
+.pb-actions{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+@media (max-width:900px){.pb-cols{grid-template-columns:repeat(6,82vw)}.fx-proj{display:none}}
+.fx-root.has-panel .fx-dock>.fx-bar:first-child{display:none}

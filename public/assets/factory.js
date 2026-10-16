@@ -263,6 +263,24 @@ export function createFactory(host, opts = {}) {
       stations.music = { group: g, disc, platter };
       addLabel(g, 'MÜZİK', 'Fon müziği · ses seviyesi', 'music');
     }
+    // YAPAY ZEKÂ — server rack with blinking modules
+    {
+      const g = new THREE.Group(); g.position.set(-(L / 2 + 0.9), 0, -4.4); g.rotation.y = 0.25; world.add(g);
+      stationBase(g, 2.4, 1.6);
+      box(g, 1.7, 2.3, 1.0, 0, 1.35, 0, M.dark, 0.08);
+      box(g, 1.78, 0.08, 1.06, 0, 2.52, 0, M.edge, 0.03);
+      const leds = [];
+      for (let r = 0; r < 7; r++) {
+        box(g, 1.5, 0.22, 0.04, 0, 0.5 + r * 0.29, 0.5, M.body, 0.02);
+        for (let k = 0; k < 4; k++) leds.push(box(g, 0.06, 0.05, 0.03, 0.42 + k * 0.1, 0.5 + r * 0.29, 0.53, M.dark, 0.01));
+        box(g, 0.5, 0.03, 0.03, -0.38, 0.5 + r * 0.29, 0.53, M.chrome, 0.005);
+      }
+      const core = ball(g, 0.16, 0, 2.85, 0, M.light);
+      cyl(g, 0.03, 0.3, 0, 2.66, 0, M.chrome, 0.03, 8);
+      tagPick(g, { kind: 'ai', index: 0 });
+      stations.ai = { group: g, leds, core };
+      addLabel(g, 'YAPAY ZEKÂ', 'Servisleri bağla · kalite', 'ai');
+    }
     // MONTAJ — big monitor + reel
     {
       const g = new THREE.Group(); g.position.set(half + 2.4, 0, 0.2); g.rotation.y = -0.35; world.add(g);
@@ -380,7 +398,7 @@ export function createFactory(host, opts = {}) {
   const tipText = (h) => {
     if (!h) return '';
     if (h.kind === 'scene') { const s = state.scenes[h.index] || {}; return `<b>Sahne ${h.index + 1}</b> · ${(+s.duration || 10)} sn<p>${(s.voiceText || s.title || '').slice(0, 110)}</p><small>Tıkla: prompt, süre ve resmi düzenle</small>`; }
-    return { script: '<b>Senaryo</b><p>Videonun konusunu ya da senaryosunu yaz, sahneleri üret.</p>', voice: '<b>Ses</b><p>Seslendirici, konuşma hızı ve altyazı ayarları.</p>', music: '<b>Müzik</b><p>Fon müziği ve ses seviyesi.</p>', export: '<b>Montaj</b><p>Önizlemeyi oynat, videoyu oluştur ve indir.</p>' }[h.kind] || '';
+    return { script: '<b>Senaryo</b><p>Videonun konusunu ya da senaryosunu yaz, sahneleri üret.</p>', voice: '<b>Ses</b><p>Seslendirici, konuşma hızı ve altyazı ayarları.</p>', music: '<b>Müzik</b><p>Fon müziği ve ses seviyesi.</p>', ai: '<b>Yapay Zekâ</b><p>Gemini, Claude, OpenAI, ElevenLabs, fal.ai, Replicate bağlantıları ve kalite ayarları.</p>', export: '<b>Montaj</b><p>Önizlemeyi oynat, videoyu oluştur ve indir.</p>' }[h.kind] || '';
   };
   function setHover(h, ev) {
     const same = h && hover && h.kind === hover.kind && h.index === hover.index;
@@ -404,12 +422,13 @@ export function createFactory(host, opts = {}) {
   });
 
   // ------------------------------------------------------------ loop
-  let needsFrame = true, raf = 0, last = performance.now(), visible = true;
+  let needsFrame = true, raf = 0, last = performance.now(), visible = true, lastPaused = 0;
   const tmp = new THREE.Vector3();
   function frame(now) {
     raf = requestAnimationFrame(frame);
     const dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (!visible) return;
+    if (state.paused) { if (now - lastPaused < 700) return; lastPaused = now; }
     const anim = !reduceMotion;
     if (camGoal.active) {
       camera.position.lerp(camGoal.pos, 1 - Math.pow(0.0015, dt));
@@ -424,6 +443,7 @@ export function createFactory(host, opts = {}) {
       if (stations.music) stations.music.disc.rotation.y -= dt * (state.playing ? 3.5 : 0.25);
       if (stations.export) { stations.export.reel.rotation.y += dt * (state.busy || state.playing ? 2.6 : 0.2); stations.export.rec.material = (state.busy && Math.sin(t * 6) > 0) ? M.light : (state.busy ? M.dark : M.light); }
       if (stations.voice) stations.voice.bars.forEach((b, k) => { const v = state.playing ? 0.3 + Math.abs(Math.sin(t * (3 + k) + k)) * 1.3 : 0.25 + Math.sin(t * 1.4 + k) * 0.05; b.scale.y = v; b.position.y = 0.2 + 0.15 * v; });
+      if (stations.ai) { stations.ai.leds.forEach((l, k) => { l.material = ((Math.sin(t * (2 + (k % 5)) + k * 1.7) > 0.3) || (state.busy && Math.sin(t * 9 + k) > 0)) ? (k % 3 ? M.green : M.light) : M.dark; }); stations.ai.core.scale.setScalar(1 + Math.sin(t * 3) * 0.08); }
       if (stations.script) stations.script.led.material = (Math.sin(t * 2.2) > 0 || state.busy) ? M.light : M.dark;
       plates.forEach((p, k) => {
         const sel = k === state.current, hov = hover && hover.kind === 'scene' && hover.index === k;

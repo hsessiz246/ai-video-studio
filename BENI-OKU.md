@@ -44,5 +44,13 @@ Value: istediğin şifre → **Save**. Açılışta kullanıcı adı herhangi bi
 - Güncelleme: GitHub'daki dosyaları yenileriyle değiştirince Render siteyi
   kendiliğinden yeniden yayınlar.
 
+## Yapay zekâ servisleri (v2.0)
+Fabrikadaki **YAPAY ZEKÂ** istasyonundan Gemini, Claude, OpenAI, Groq, OpenRouter (metin),
+Gemini / OpenAI / fal.ai / Replicate (görsel), ElevenLabs / OpenAI (ses) ve fal.ai / Replicate
+(resmi videoya çevirme: Kling, Hailuo, Seedance) bağlanabilir. Anahtarlar yalnızca
+kullanıcının kendi tarayıcısında saklanır; istekler bu sunucu üzerinden servise iletilir
+(sunucu anahtarları kaydetmez). Web sürümünde üretilen video klipler sunucu uyuyana kadar
+saklanır — videoyu oluşturup indirmeyi unutma.
+
 ## Kendi bilgisayarında denemek
 Node.js 20+ kuruluysa bu klasörde: `node server.js` → http://localhost:10000

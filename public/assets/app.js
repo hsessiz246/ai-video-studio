@@ -4430,7 +4430,7 @@ const Kt = W("Wand2", [["path", { d: "m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72
 * See the LICENSE file in the root directory of this source tree.
 */
 const $p = W("X", [["path", { d: "M18 6 6 18", key: "1bl5f8" }], ["path", { d: "m6 6 12 12", key: "d8bk6v" }]]);
-function Kp({ appMode: e, setAppMode: t, aspectRatio: n, setAspectRatio: r, onExport: i, isExporting: l, exportProgress: a, scenesCount: s, onLoadMalazgirtProject: u, onLoadFatihProject: d, onLoadSaladinProject: h, activeProject: m, onOpenPromptStudio: y, onSaveProject: hS, onOpenProject: hO, onFitDurations: hF, isFitting: hFi, onOpenTools: hT }) { return o.jsxs("header", { className: "studio-header", children: [o.jsxs("div", { className: "brand-section", children: [o.jsx("div", { className: "brand-icon", children: o.jsx(is, { size: 22 }) }), o.jsxs("div", { children: [o.jsx("h1", { className: "brand-title", children: "AI Video Studio" }), o.jsx("div", { style: { display: "flex", alignItems: "center", gap: 6, marginTop: 2 }, children: o.jsx("span", { className: "brand-badge", children: "PC · v1.8" }) })] })] }), o.jsxs("div", { className: "header-center", children: [o.jsxs("button", { type: "button", className: "btn btn-sm", style: { background: "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)", color: "white", fontWeight: 700, boxShadow: "0 0 16px rgba(168, 85, 247, 0.45)", border: "1px solid rgba(255, 255, 255, 0.2)", padding: "7px 12px" }, onClick: y, title: "Herhangi bir prompt veya senaryo yapıştırarak 4K görselleri otomatik üret", children: [o.jsx(Kt, { size: 14, color: "#fef08a" }), o.jsx("span", { className: "btn-label", children: "Senaryo" })] }), o.jsxs("div", { className: "format-switcher", style: { background: "rgba(255, 255, 255, 0.05)" }, children: [o.jsxs("button", { className: `format-btn ${e === "multiScene" ? "active" : ""}`, onClick: () => t("multiScene"), type: "button", children: [o.jsx(Hc, { size: 15, color: "var(--accent-cyan)" }), "Stüdyo"] }), o.jsxs("button", { className: `format-btn ${e === "promptToVideo" ? "active" : ""}`, onClick: () => t("promptToVideo"), type: "button", children: [o.jsx(Kt, { size: 15, color: "var(--primary-light)" }), "Tek Prompt"] }), o.jsx("button", { className: `format-btn ${e === "longVideo" ? "active" : ""}`, onClick: () => t("longVideo"), type: "button", title: "5-10 dakikalık bölümlü belgesel videolar", children: "🎞️ Uzun Video" }), o.jsx("button", { className: `format-btn ${e === "shortVideo" ? "active" : ""}`, onClick: () => t("shortVideo"), type: "button", title: "Planlarındaki kısa videolar: Shorts / TikTok / Reels (9:16, ≤60 sn)", children: "📱 Kısa Video" })] }), o.jsxs("select", { className: "form-select header-preset-select", title: "Hazır tarih projelerini yükle", value: ["malazgirt", "fatih", "saladin"].includes(m) ? m : "", onChange: ev => { const pv = ev.target.value; pv === "malazgirt" ? u() : pv === "fatih" ? d() : pv === "saladin" && h(); }, children: [o.jsx("option", { value: "", children: "📚 Hazır Projeler…" }), o.jsx("option", { value: "malazgirt", children: "⚔️ 1071 Malazgirt Zaferi" }), o.jsx("option", { value: "fatih", children: "👑 1453 İstanbul'un Fethi" }), o.jsx("option", { value: "saladin", children: "🏰 1187 Kudüs – Selahaddin" })] }), e === "multiScene" && o.jsxs("div", { className: "format-switcher", title: "Video Boyut Formatı", children: [o.jsxs("button", { className: `format-btn ${n === "portrait" ? "active" : ""}`, onClick: () => r("portrait"), type: "button", title: "9:16 Dikey", children: [o.jsx($c, { size: 15 }), "9:16"] }), o.jsxs("button", { className: `format-btn ${n === "landscape" ? "active" : ""}`, onClick: () => r("landscape"), type: "button", title: "16:9 Yatay", children: [o.jsx(Bc, { size: 15 }), "16:9"] })] })] }), o.jsx("div", { className: "header-actions", children: e === "multiScene" && o.jsxs(o.Fragment, { children: [o.jsx("button", { type: "button", className: "btn btn-secondary btn-sm", onClick: hT, title: "AI senaryo, kanal markası, geçişler, müzik, kapak görseli ve YouTube metni", style: { borderColor: "rgba(168,85,247,0.6)" }, children: ["🧰", o.jsx("span", { className: "btn-label", children: " Araçlar" })] }), o.jsx("button", { type: "button", className: "btn btn-secondary btn-sm", onClick: hF, disabled: hFi || l || s === 0, title: "Her sahnenin süresini seslendirmenin uzunluğuna göre otomatik ayarla", children: hFi ? ["⏳", o.jsx("span", { className: "btn-label", children: " Ölçülüyor…" })] : ["⏱️", o.jsx("span", { className: "btn-label", children: " Sese Uydur" })] }), o.jsx("button", { type: "button", className: "btn btn-secondary btn-sm", onClick: hO, disabled: l, title: "Kayıtlı projeyi aç (Ctrl+O)", children: ["📂", o.jsx("span", { className: "btn-label", children: " Aç" })] }), o.jsx("button", { type: "button", className: "btn btn-secondary btn-sm", onClick: hS, disabled: l || s === 0, title: "Projeyi dosyaya kaydet (Ctrl+S)", children: ["💾", o.jsx("span", { className: "btn-label", children: " Kaydet" })] }), o.jsx("button", { className: "btn btn-primary", onClick: i, disabled: l || s === 0, title: "Tüm 120 Saniyelik Videoyu Bilgisayara İndir", children: l ? o.jsxs(o.Fragment, { children: [o.jsx(Xt, { size: 18, className: "animate-spin" }), "Render Ediliyor (", a, "%)"] }) : o.jsxs(o.Fragment, { children: [o.jsx(xi, { size: 18 }), "Dışa Aktar (", Xfmt, ")"] }) })] }) })] }); }
+function Kp({ appMode: e, setAppMode: t, aspectRatio: n, setAspectRatio: r, onExport: i, isExporting: l, exportProgress: a, scenesCount: s, onLoadMalazgirtProject: u, onLoadFatihProject: d, onLoadSaladinProject: h, activeProject: m, onOpenPromptStudio: y, onSaveProject: hS, onOpenProject: hO, onFitDurations: hF, isFitting: hFi, onOpenTools: hT }) { return o.jsxs("header", { className: "studio-header", children: [o.jsxs("div", { className: "brand-section", children: [o.jsx("div", { className: "brand-icon", children: o.jsx(is, { size: 22 }) }), o.jsxs("div", { children: [o.jsx("h1", { className: "brand-title", children: "AI Video Studio" }), o.jsx("div", { style: { display: "flex", alignItems: "center", gap: 6, marginTop: 2 }, children: o.jsx("span", { className: "brand-badge", children: "PC · v2.0" }) })] })] }), o.jsxs("div", { className: "header-center", children: [o.jsxs("button", { type: "button", className: "btn btn-sm", style: { background: "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)", color: "white", fontWeight: 700, boxShadow: "0 0 16px rgba(168, 85, 247, 0.45)", border: "1px solid rgba(255, 255, 255, 0.2)", padding: "7px 12px" }, onClick: y, title: "Herhangi bir prompt veya senaryo yapıştırarak 4K görselleri otomatik üret", children: [o.jsx(Kt, { size: 14, color: "#fef08a" }), o.jsx("span", { className: "btn-label", children: "Senaryo" })] }), o.jsxs("div", { className: "format-switcher", style: { background: "rgba(255, 255, 255, 0.05)" }, children: [o.jsxs("button", { className: `format-btn ${e === "multiScene" ? "active" : ""}`, onClick: () => t("multiScene"), type: "button", children: [o.jsx(Hc, { size: 15, color: "var(--accent-cyan)" }), "Stüdyo"] }), o.jsxs("button", { className: `format-btn ${e === "promptToVideo" ? "active" : ""}`, onClick: () => t("promptToVideo"), type: "button", children: [o.jsx(Kt, { size: 15, color: "var(--primary-light)" }), "Tek Prompt"] }), o.jsx("button", { className: `format-btn ${e === "longVideo" ? "active" : ""}`, onClick: () => t("longVideo"), type: "button", title: "5-10 dakikalık bölümlü belgesel videolar", children: "🎞️ Uzun Video" }), o.jsx("button", { className: `format-btn ${e === "shortVideo" ? "active" : ""}`, onClick: () => t("shortVideo"), type: "button", title: "Planlarındaki kısa videolar: Shorts / TikTok / Reels (9:16, ≤60 sn)", children: "📱 Kısa Video" })] }), o.jsxs("select", { className: "form-select header-preset-select", title: "Hazır tarih projelerini yükle", value: ["malazgirt", "fatih", "saladin"].includes(m) ? m : "", onChange: ev => { const pv = ev.target.value; pv === "malazgirt" ? u() : pv === "fatih" ? d() : pv === "saladin" && h(); }, children: [o.jsx("option", { value: "", children: "📚 Hazır Projeler…" }), o.jsx("option", { value: "malazgirt", children: "⚔️ 1071 Malazgirt Zaferi" }), o.jsx("option", { value: "fatih", children: "👑 1453 İstanbul'un Fethi" }), o.jsx("option", { value: "saladin", children: "🏰 1187 Kudüs – Selahaddin" })] }), e === "multiScene" && o.jsxs("div", { className: "format-switcher", title: "Video Boyut Formatı", children: [o.jsxs("button", { className: `format-btn ${n === "portrait" ? "active" : ""}`, onClick: () => r("portrait"), type: "button", title: "9:16 Dikey", children: [o.jsx($c, { size: 15 }), "9:16"] }), o.jsxs("button", { className: `format-btn ${n === "landscape" ? "active" : ""}`, onClick: () => r("landscape"), type: "button", title: "16:9 Yatay", children: [o.jsx(Bc, { size: 15 }), "16:9"] })] })] }), o.jsx("div", { className: "header-actions", children: e === "multiScene" && o.jsxs(o.Fragment, { children: [o.jsx("button", { type: "button", className: "btn btn-secondary btn-sm", onClick: hT, title: "AI senaryo, kanal markası, geçişler, müzik, kapak görseli ve YouTube metni", style: { borderColor: "rgba(168,85,247,0.6)" }, children: ["🧰", o.jsx("span", { className: "btn-label", children: " Araçlar" })] }), o.jsx("button", { type: "button", className: "btn btn-secondary btn-sm", onClick: hF, disabled: hFi || l || s === 0, title: "Her sahnenin süresini seslendirmenin uzunluğuna göre otomatik ayarla", children: hFi ? ["⏳", o.jsx("span", { className: "btn-label", children: " Ölçülüyor…" })] : ["⏱️", o.jsx("span", { className: "btn-label", children: " Sese Uydur" })] }), o.jsx("button", { type: "button", className: "btn btn-secondary btn-sm", onClick: hO, disabled: l, title: "Kayıtlı projeyi aç (Ctrl+O)", children: ["📂", o.jsx("span", { className: "btn-label", children: " Aç" })] }), o.jsx("button", { type: "button", className: "btn btn-secondary btn-sm", onClick: hS, disabled: l || s === 0, title: "Projeyi dosyaya kaydet (Ctrl+S)", children: ["💾", o.jsx("span", { className: "btn-label", children: " Kaydet" })] }), o.jsx("button", { className: "btn btn-primary", onClick: i, disabled: l || s === 0, title: "Tüm 120 Saniyelik Videoyu Bilgisayara İndir", children: l ? o.jsxs(o.Fragment, { children: [o.jsx(Xt, { size: 18, className: "animate-spin" }), "Render Ediliyor (", a, "%)"] }) : o.jsxs(o.Fragment, { children: [o.jsx(xi, { size: 18 }), "Dışa Aktar (", Xfmt, ")"] }) })] }) })] }); }
 const No = ["https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1080&q=80", "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1080&q=80", "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1080&q=80", "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1080&q=80", "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1080&q=80", "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1080&q=80", "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1080&q=80"];
 function Gc(e, t = "cinematic") { const n = e.replace(/[^\w\sğüşıöçĞÜŞİÖÇ]/gi, " ").trim(), r = { cinematic: "cinematic lighting, ultra-detailed, 8k, photorealistic, atmospheric mist, anamorphic lens, 35mm photography", anime: "makoto shinkai style, vibrant colors, aesthetic anime scenery, studio ghibli lighting, masterpiece", cyberpunk: "cyberpunk neon city, futuristic hologram, rain reflection, volumetric smoke, octane render", nature: "national geographic style, epic wide shot, dramatic natural lighting, 4k landscape, majestic golden hour", dark_fantasy: "dark fantasy aesthetic, dramatic shadows, moody concept art, trending on artstation, mystical particles" }, i = r[t] || r.cinematic; return `${n}, ${i}, no text, masterpiece`; }
 function Wp(e, t = "portrait", n = "cinematic", r = Math.floor(Math.random() * 1e5)) { const i = e.toLowerCase(); if (i.includes("selahaddin") || i.includes("saladin") || i.includes("büyük hedef"))
@@ -4839,11 +4839,11 @@ async function Yc(e, t = 1) { const n = (e || "").toLowerCase(); for (const i of
         const l = Math.min(12, Math.max(1, t));
         return `${i.basePath}${l}.png`;
     } if (SX.studio.imageSource === "ai") {
-    const u0 = sxImageUrl(e, Math.floor(Math.random() * 1e6)), q0 = await Di(u0);
+    const u0 = await SXAI.image(e).catch(x => (SXAI.err("Görsel (" + AI_NAMES[SXAI.cfg.image] + ")", x), sxImageUrl(e, Math.floor(Math.random() * 1e6)))), q0 = await Di(u0);
     if (q0.success)
         return u0;
 } const r = await cm(e); return r || dm(e, t); }
-async function fm(e, t = () => { }) { const n = []; for (let r = 0; r < e.length; r++) {
+async function fm(e, t = () => { }) { try { e = await SXAI.directScenes(e, t); } catch (x) { console.warn(x); } const n = []; for (let r = 0; r < e.length; r++) {
     const i = e[r], l = i.sceneNumber || r + 1;
     t(`Sahne ${l}/${e.length} görseli hazırlanıyor...`, Math.floor(r / e.length * 100));
     let a = i.imageUrl;
@@ -5382,7 +5382,8 @@ function sxImageUrl(prompt, seed) {
     const st = SX_STYLES[SX.studio.imageStyle] || SX_STYLES.cinematic, portrait = (SX.api.aspect || "portrait") === "portrait";
     const clean = (prompt || "").replace(/["“”]/g, "").replace(/\s+/g, " ").trim().slice(0, 600);
     const full = `${clean}, ${st[1]}, no text, no watermark`;
-    return `/api/img?w=${portrait ? 720 : 1280}&h=${portrait ? 1280 : 720}&seed=${seed}&prompt=${encodeURIComponent(full)}`;
+    const hi = typeof SXAI !== "undefined" && SXAI.cfg.hiRes;
+    return `/api/img?w=${portrait ? (hi ? 1080 : 720) : (hi ? 1920 : 1280)}&h=${portrait ? (hi ? 1920 : 1280) : (hi ? 1080 : 720)}&seed=${seed}&prompt=${encodeURIComponent(full)}`;
 }
 
 // ---------- küçük yardımcılar ----------
@@ -5790,6 +5791,7 @@ function LongStudio({ onSendToStudio }) {
         let chs = (chsIn || jobRef.current.chapters).map(c => ({ ...c, scenes: c.scenes.map(s => ({ ...s })) }));
         const all = chs.flatMap((c, ci) => c.scenes.map((s, si) => [ci, si])), todo = all.filter(([ci, si]) => !chs[ci].scenes[si].imageUrl), t0 = Date.now();
         try {
+            if (typeof SXAI !== "undefined" && todo.length > 1) { const flat = todo.map(([ci, si]) => chs[ci].scenes[si]); const dir = await SXAI.directScenes(flat, m => upd({ log: m })); todo.forEach(([ci, si], k) => { chs[ci].scenes[si] = dir[k]; }); }
             for (let n = 0; n < todo.length; n++) {
                 if (stopRef.current) break;
                 const [ci, si] = todo[n], s = chs[ci].scenes[si], el = (Date.now() - t0) / 1e3, eta = n > 0 ? Math.round(el / n * (todo.length - n) / 60) : null;
@@ -5958,6 +5960,7 @@ function ShortStudio({ onSendToStudio }) {
         SX.studio.imageStyle = form.style, SX.studio.imageSource = "ai", SX.api.aspect = "portrait";
         try {
             const scenes = [];
+            if (typeof SXAI !== "undefined") { const dir = await SXAI.directScenes(base, m => setLog(m)); dir.forEach((d, k) => { base[k] = d; }); }
             for (let k = 0; k < base.length; k++) {
                 setProg(Math.round(k / base.length * 100)), setLog(`Görsel ${k + 1}/${base.length} çiziliyor…`);
                 let url = await Yc(base[k].visualPrompt || base[k].voiceText || form.title, k + 1);
@@ -6026,9 +6029,15 @@ function FxSceneEditor({ pr, index, onNav, onClose }) {
     const [busy, setBusy] = P.useState(""), [url, setUrl] = P.useState(""), [showUrl, setShowUrl] = P.useState(!1), fileRef = P.useRef(null);
     const [vp, setVp] = P.useState(s ? s.visualPrompt || "" : ""), [dirty, setDirty] = P.useState(!1);
     P.useEffect(() => { setVp(s ? s.visualPrompt || "" : ""), setDirty(!1), setShowUrl(!1), setUrl(""); }, [index, s && s.id]);
+    const [msg, setMsg] = P.useState("");
+    useAI();
+    P.useEffect(() => { setMsg(""); }, [index]);
     if (!s) return null;
     const up = (patch) => pr.onUpdate(index, patch);
-    const redraw = async (prompt) => { const q = (prompt || s.visualPrompt || s.voiceText || s.title || "").trim(); if (!q) return; setBusy("draw"); try { let img = sxImageUrl(q, Math.floor(Math.random() * 1e6)); const ok = await Di(img); if (!ok.success) img = await Yc(q, s.sceneNumber || index + 1); up({ visualPrompt: q, imageUrl: img, videoUrl: null }), setDirty(!1); } catch (e) { alert("Görsel çizilemedi: " + e.message); } setBusy(""); };
+    const sid = s.id, i0 = index, later = (patch) => pr.onPatchById(sid, i0, patch);
+    const redraw = async (prompt) => { const q = (prompt || s.visualPrompt || s.voiceText || s.title || "").trim(); if (!q) return; setBusy("draw"), setMsg(""); try { let img; try { img = await SXAI.image(q); } catch (e) { SXAI.err("Görsel (" + AI_NAMES[SXAI.cfg.image] + ")", e), setMsg("⚠ " + e.message + " — ücretsiz motor kullanıldı"); img = sxImageUrl(q, Math.floor(Math.random() * 1e6)); } const ok = await Di(img); if (!ok.success) img = await Yc(q, s.sceneNumber || index + 1); later({ visualPrompt: q, imageUrl: img, videoUrl: null }), setDirty(!1); } catch (e) { setMsg("✗ Görsel çizilemedi: " + e.message); } setBusy(""); };
+    const improve = async () => { setBusy("improve"), setMsg(""); try { const t = await SXAI.improvePrompt({ ...s, visualPrompt: vp }); t && (setVp(t), setDirty(!0), later({ visualPrompt: t })); } catch (e) { setMsg("✗ " + e.message); } setBusy(""); };
+    const animate = async () => { if (!SXAI.videoReady()) return pr.openPanel("ai"); setBusy("anim"), setMsg("Başlatılıyor…"); try { const u = await SXAI.animate(s, setMsg); later({ videoUrl: u }), setMsg("✓ Video klip hazır"); } catch (e) { setMsg("✗ " + e.message); } setBusy(""); };
     const onFile = async (e) => { const f = e.target.files && e.target.files[0]; e.target.value = ""; if (!f) return; if (f.type.startsWith("video/")) return up({ videoUrl: URL.createObjectURL(f), imageUrl: s.imageUrl || "" }); setBusy("file"); try { up({ imageUrl: await fxReadImage(f), videoUrl: null }); } catch { alert("Resim okunamadı."); } setBusy(""); };
     const move = (d) => { const j = index + d; if (j < 0 || j >= n) return; const a = [...pr.scenes]; [a[index], a[j]] = [a[j], a[index]]; pr.onSetScenes(a), onNav(j); };
     const dupe = () => { const a = [...pr.scenes]; a.splice(index + 1, 0, { ...s, id: `scene_${Date.now()}` }); pr.onSetScenes(a), onNav(index + 1); };
@@ -6040,11 +6049,16 @@ function FxSceneEditor({ pr, index, onNav, onClose }) {
         fxH("div", { className: "fx-dbody" },
             fxH("div", { className: `fx-media ${pr.aspect}` },
                 s.videoUrl ? fxH("video", { src: s.videoUrl, muted: !0, loop: !0, autoPlay: !0, playsInline: !0 }) : s.imageUrl ? fxH("img", { src: s.imageUrl, alt: "" }) : fxH("div", { className: "fx-empty" }, "Bu sahnede resim yok"),
-                busy === "draw" && fxH("div", { className: "fx-busy" }, "🎨 Çiziliyor…")),
+                busy === "draw" && fxH("div", { className: "fx-busy" }, "🎨 Çiziliyor…"), busy === "anim" && fxH("div", { className: "fx-busy" }, "🎥 ", msg || "Video çiziliyor…"), s.videoUrl && fxH("span", { className: "fx-badge" }, "VİDEO")),
             fxH("div", { className: "fx-row" },
                 fxH("button", { type: "button", className: "fx-btn primary", disabled: !!busy, onClick: () => redraw(vp) }, "🎨 Yeniden çiz"),
                 fxH("button", { type: "button", className: "fx-btn", disabled: !!busy, onClick: () => fileRef.current && fileRef.current.click() }, "📁 Resim / video yükle"),
                 fxH("button", { type: "button", className: "fx-btn", onClick: () => setShowUrl(!showUrl) }, "🔗")),
+            fxH("div", { className: "fx-row" },
+                fxH("button", { type: "button", className: "fx-btn", disabled: !!busy, onClick: improve, title: "Yapay zekâ promptu daha sinematik ve detaylı hâle getirir" }, busy === "improve" ? "✨ Yazılıyor…" : "✨ Promptu iyileştir"),
+                fxH("button", { type: "button", className: `fx-btn ${SXAI.videoReady() ? "accent" : ""}`, disabled: !!busy || !s.imageUrl, onClick: animate, title: SXAI.videoReady() ? "Resmi " + AI_NAMES[SXAI.cfg.video] + " ile 5 sn'lik gerçek videoya çevirir" : "Önce Yapay Zekâ istasyonundan bir video servisi bağla" }, s.videoUrl ? "🎥 Yeniden hareketlendir" : "🎥 Hareketlendir"),
+                s.videoUrl && fxH("button", { type: "button", className: "fx-btn", disabled: !!busy, onClick: () => up({ videoUrl: null }) }, "Videoyu kaldır")),
+            msg && busy !== "anim" && fxH("div", { className: `fx-note ${msg[0] === "✗" || msg[0] === "⚠" ? "warn" : ""}` }, msg),
             fxH("input", { ref: fileRef, type: "file", accept: "image/*,video/*", style: { display: "none" }, onChange: onFile }),
             showUrl && fxH("div", { className: "fx-row" }, fxH("input", { className: "fx-input", placeholder: "https://… resim adresi", value: url, onChange: e => setUrl(e.target.value) }), fxH("button", { type: "button", className: "fx-btn", onClick: () => { url.trim() && (up({ imageUrl: url.trim(), videoUrl: null }), setShowUrl(!1)); } }, "Kullan")),
             fxH(FxField, { label: "Görsel promptu", hint: "ekranda ne görünsün?" },
@@ -6066,6 +6080,9 @@ function FxSceneEditor({ pr, index, onNav, onClose }) {
 }
 function FxStationPanel({ pr, kind, onClose, prompt, setPrompt, onOpenScene }) {
     const [cnt, setCnt] = P.useState(() => Math.max(3, Math.min(12, pr.scenes.length || 6))), [dur, setDur] = P.useState(8);
+    const ai = useAI(), st = useStudio(), [batch, setBatch] = P.useState(null), stopRef = P.useRef(!1);
+    const engines = fxH("div", { className: "fx-engines" }, fxH("span", null, "Metin: ", fxH("b", null, AI_NAMES[ai.text])), fxH("span", null, "Görsel: ", fxH("b", null, st.imageSource === "ai" ? AI_NAMES[ai.image] : "Wikipedia")), fxH("span", null, "Yönetmen: ", fxH("b", null, ai.director ? "açık" : "kapalı")), fxH("button", { type: "button", className: "fx-link", onClick: () => pr.openPanel("ai") }, "değiştir"));
+    const runBatch = async () => { const todo = pr.scenes.map((x, i) => [x, i]).filter(([x]) => x.imageUrl && !x.videoUrl); if (!todo.length) return; stopRef.current = !1; for (let k = 0; k < todo.length; k++) { if (stopRef.current) break; const [x, i] = todo[k]; setBatch({ k, n: todo.length, msg: "Başlıyor…" }); try { const u = await SXAI.animate(x, m => setBatch({ k, n: todo.length, msg: m })); pr.onPatchById(x.id, i, { videoUrl: u }); } catch (e) { setBatch({ k, n: todo.length, msg: "✗ Sahne " + (i + 1) + ": " + e.message, err: !0 }); await new Promise(r => setTimeout(r, 2500)); } } setBatch(null); };
     const head = (t, sub) => fxH("div", { className: "fx-dhead" }, fxH("div", null, fxH("small", null, sub), fxH("strong", null, t)), fxH("div", { className: "fx-dnav" }, fxH("button", { type: "button", onClick: onClose, title: "Kapat" }, "✕")));
     let body = null;
     if (kind === "script") body = fxH("div", { className: "fx-dbody" },
@@ -6075,18 +6092,21 @@ function FxStationPanel({ pr, kind, onClose, prompt, setPrompt, onOpenScene }) {
             fxH(FxField, { label: "Sahne sayısı" }, fxH("select", { className: "fx-input", value: cnt, onChange: e => setCnt(+e.target.value) }, [3, 4, 5, 6, 8, 10, 12, 15, 20, 30, 40].map(v => fxH("option", { key: v, value: v }, v, " sahne")))),
             fxH(FxField, { label: "Sahne başı süre" }, fxH("select", { className: "fx-input", value: dur, onChange: e => setDur(+e.target.value) }, [4, 5, 6, 8, 10, 12, 15].map(v => fxH("option", { key: v, value: v }, v, " sn"))))),
         fxH("div", { className: "fx-note" }, "≈ ", Math.round(cnt * dur), " sn video · ", pr.aspect === "portrait" ? "9:16 dikey" : "16:9 yatay"),
+        engines,
         pr.isGenerating ? fxH("div", { className: "fx-progress" }, fxH("i", { style: { width: (pr.genProgress || 0) + "%" } }), fxH("span", null, pr.genStatus || "Çalışıyor…")) :
             fxH("button", { type: "button", className: "fx-btn primary wide", disabled: !prompt.trim(), onClick: () => { try { SX.set({ lastTopic: prompt.trim().split("\n")[0].slice(0, 80) }); } catch { } pr.onGenerate(prompt, cnt, dur); } }, "⚙️ Sahneleri üret"),
         pr.scenes.length > 0 && !pr.isGenerating && fxH("div", { className: "fx-note warn" }, "Üretmek mevcut ", pr.scenes.length, " sahnenin yerine yenilerini koyar."),
         fxH("div", { className: "fx-sep" }),
         fxH("div", { className: "fx-row" }, fxH("button", { type: "button", className: "fx-btn", onClick: () => { pr.onAdd(); setTimeout(() => onOpenScene(pr.scenes.length), 50); } }, "＋ Boş sahne ekle")));
     if (kind === "voice") body = fxH("div", { className: "fx-dbody" },
-        fxH(FxField, { label: "Seslendirici" }, fxH("select", { className: "fx-input", value: pr.voice, onChange: e => pr.setVoice(e.target.value) }, FX_VOICES.map(([v, t]) => fxH("option", { key: v, value: v }, t)), !FX_VOICES.some(v => v[0] === pr.voice) && fxH("option", { value: pr.voice }, "Sistem sesi"))),
+        fxH(FxField, { label: "Seslendirici" }, fxH("select", { className: "fx-input", value: pr.voice, onChange: e => pr.setVoice(e.target.value) }, SXAI.voiceList().length > 0 && fxH("optgroup", { label: "Stüdyo kalitesi (bağlı servisler)" }, SXAI.voiceList().map(([v, t]) => fxH("option", { key: v, value: v }, t))), fxH("optgroup", { label: "Ücretsiz sesler" }, FX_VOICES.map(([v, t]) => fxH("option", { key: v, value: v }, t))), ![...FX_VOICES, ...SXAI.voiceList()].some(v => v[0] === pr.voice) && fxH("option", { value: pr.voice }, "Sistem sesi"))),
+        !SXAI.voiceList().length && fxH("div", { className: "fx-note" }, "Daha doğal sesler için ", fxH("button", { type: "button", className: "fx-link", onClick: () => pr.openPanel("ai") }, "ElevenLabs ya da OpenAI bağla"), "."),
         fxH("div", { className: "fx-row" }, fxH("button", { type: "button", className: "fx-btn", onClick: () => pr.onPreviewTTS((pr.scenes[pr.currentIndex] || {}).voiceText || "Merhaba! Bu ses videonu seslendirecek.") }, "🔊 Sesi dene")),
         fxH(FxField, { label: "Konuşma hızı", hint: pr.rate.toFixed(1) + "×" }, fxH("input", { type: "range", min: .7, max: 1.5, step: .1, value: pr.rate, onChange: e => pr.setRate(parseFloat(e.target.value)) })),
         fxH("label", { className: "fx-switch" }, fxH("input", { type: "checkbox", checked: pr.subsOn, onChange: e => pr.setSubsOn(e.target.checked) }), fxH("span", null, "Altyazı göster")),
         pr.subsOn && fxH("div", { className: "fx-chips" }, FX_SUBS.map(([v, t]) => fxH("button", { key: v, type: "button", className: `fx-chip ${pr.subStyle === v ? "on" : ""}`, onClick: () => pr.setSubStyle(v) }, t))),
         fxH("label", { className: "fx-switch" }, fxH("input", { type: "checkbox", checked: pr.outroOn, onChange: e => pr.setOutroOn(e.target.checked) }), fxH("span", null, "Sona “Abone ol & beğen” kapanışı ekle")));
+    if (kind === "ai") body = fxH(FxAiPanel);
     if (kind === "music") body = fxH("div", { className: "fx-dbody" },
         fxH("div", { className: "fx-tiles" }, FX_MUSIC.map(([v, i, t]) => fxH("button", { key: v, type: "button", className: `fx-tile ${pr.bgm === v ? "on" : ""}`, onClick: () => pr.setBgm(v) }, fxH("b", null, i), t))),
         pr.bgm === "custom" && fxH("div", { className: "fx-note" }, "Kendi müziğini Araçlar › Müzik sekmesinden yükleyebilirsin."),
@@ -6098,14 +6118,33 @@ function FxStationPanel({ pr, kind, onClose, prompt, setPrompt, onOpenScene }) {
         fxH("div", { className: "fx-row" }, fxH("button", { type: "button", className: "fx-btn", disabled: !pr.scenes.length, onClick: pr.onTogglePlay }, pr.isPlaying ? "⏸ Durdur" : "▶ Önizle"), fxH("button", { type: "button", className: "fx-btn", onClick: pr.onReset }, "⏮ Başa sar"), fxH("button", { type: "button", className: "fx-btn", disabled: pr.isFitting || !pr.scenes.length, onClick: pr.onFit }, pr.isFitting ? "Ölçülüyor…" : "🎯 Süreleri sese uydur")),
         pr.isExporting ? fxH("div", { className: "fx-progress" }, fxH("i", { style: { width: (pr.exportProgress || 0) + "%" } }), fxH("span", null, "Video oluşturuluyor… %", Math.round(pr.exportProgress || 0))) :
             fxH("button", { type: "button", className: "fx-btn primary wide big", disabled: !pr.scenes.length, onClick: pr.onExport }, "🎬 Videoyu oluştur"),
-        fxH("div", { className: "fx-note" }, "Oluştururken bu pencereyi açık ve önde tut."));
-    const titles = { script: ["Senaryo", "İSTASYON 01 · PROMPT"], voice: ["Ses", "İSTASYON 03 · SESLENDİRME"], music: ["Müzik", "İSTASYON 04 · FON MÜZİĞİ"], export: ["Montaj", "İSTASYON 05 · ÇIKIŞ"] }[kind];
+        fxH("div", { className: "fx-note" }, "Oluştururken bu pencereyi açık ve önde tut."),
+        fxH("div", { className: "fx-sep" }),
+        fxH("div", { className: "fx-field" }, fxH("span", null, "Yapay zekâ video hareketi", fxH("em", null, SXAI.videoReady() ? AI_NAMES[ai.video] : "bağlı değil"))),
+        batch ? fxH("div", null, fxH("div", { className: "fx-progress" }, fxH("i", { style: { width: Math.round(batch.k / batch.n * 100) + "%" } }), fxH("span", null, `Sahne ${batch.k + 1}/${batch.n} · `, batch.msg)), fxH("button", { type: "button", className: "fx-btn wide", style: { marginTop: 6 }, onClick: () => { stopRef.current = !0; } }, "Bu sahneden sonra durdur")) :
+            SXAI.videoReady() ? fxH("button", { type: "button", className: "fx-btn wide", disabled: !pr.scenes.some(x => x.imageUrl && !x.videoUrl), onClick: runBatch }, "🎥 Resimli tüm sahneleri hareketlendir (", pr.scenes.filter(x => x.imageUrl && !x.videoUrl).length, ")") :
+                fxH("button", { type: "button", className: "fx-btn wide", onClick: () => pr.openPanel("ai") }, "🎥 Video servisi bağla (Kling, Hailuo, Seedance)"),
+        SXAI.videoReady() && fxH("div", { className: "fx-note" }, "Her sahne 5 sn'lik gerçek video olur; servis sahne başına ücret keser."));
+    const titles = { script: ["Senaryo", "İSTASYON 01 · PROMPT"], voice: ["Ses", "İSTASYON 03 · SESLENDİRME"], music: ["Müzik", "İSTASYON 04 · FON MÜZİĞİ"], export: ["Montaj", "İSTASYON 05 · ÇIKIŞ"], ai: ["Yapay Zekâ", "İSTASYON 06 · BAĞLANTILAR"] }[kind];
     return fxH("div", { className: "fx-drawer" }, head(titles[0], titles[1]), body);
 }
 function FactoryView(pr) {
     const host = P.useRef(null), api = P.useRef(null), pickRef = P.useRef(null);
     const [err, setErr] = P.useState(""), [ready, setReady] = P.useState(!1), [panel, setPanel] = P.useState(null), [cam, setCam] = P.useState("overview"), [monOpen, setMonOpen] = P.useState(!0);
     const [prompt, setPrompt] = P.useState(() => { try { return SX.studio.lastTopic || ""; } catch { return ""; } });
+    const [boardOpen, setBoardOpen] = P.useState(!1), [activeId, setActiveId] = P.useState(() => { try { return localStorage.getItem("aivs_active_card") || ""; } catch { return ""; } });
+    const cards = usePB(), active = cards.find(c => c.id === activeId), loadingRef = P.useRef(!1), wasExp = P.useRef(!1);
+    pr = { ...pr, openPanel: k => setPanel({ kind: k }) };
+    const openCard = async (c) => {
+        loadingRef.current = !0, setBoardOpen(!1), setActiveId(c.id); try { localStorage.setItem("aivs_active_card", c.id); } catch { }
+        let saved = null; try { saved = await IDB.get("proj:" + c.id); } catch { }
+        SX.set({ lastTopic: c.title }); c.series === "cocuk" && SX.set({ imageStyle: "cartoon", imageSource: "ai" });
+        if (saved && saved.scenes && saved.scenes.length) { pr.onLoadScenes(saved.scenes, saved.aspect || (c.format === "uzun" ? "landscape" : "portrait")), setPanel(null); }
+        else { pr.onLoadScenes([], c.format === "uzun" ? "landscape" : "portrait"), setPrompt(c.title + (c.notes ? "\n\nDoğrulanmış bilgiler ve notlar (senaryo yalnızca bunlara dayansın):\n" + c.notes : "")), setPanel({ kind: "script" }); }
+        setTimeout(() => { loadingRef.current = !1; }, 600);
+    };
+    P.useEffect(() => { if (!activeId || loadingRef.current) return; const t = setTimeout(() => { if (loadingRef.current) return; IDB.set("proj:" + activeId, { scenes: pr.scenes.map(x => x.videoUrl && String(x.videoUrl).startsWith("blob:") ? { ...x, videoUrl: null } : x), aspect: pr.aspect, savedAt: Date.now() }).catch(() => { }); if (pr.scenes.length) { PB.advance(activeId, "arastirma"); pr.scenes.every(x => x.imageUrl || x.videoUrl) && PB.advance(activeId, "uretim"); } }, 1200); return () => clearTimeout(t); }, [pr.scenes, pr.aspect, activeId]);
+    P.useEffect(() => { if (wasExp.current && !pr.isExporting && activeId && pr.scenes.length) PB.advance(activeId, "hazir"); wasExp.current = pr.isExporting; }, [pr.isExporting]);
     pickRef.current = (kind, i) => { if (kind === "scene") { pr.onSelect(i), setPanel({ kind: "scene", index: i }); } else setPanel({ kind }); };
     P.useEffect(() => {
         let dead = !1;
@@ -6113,19 +6152,19 @@ function FactoryView(pr) {
             .catch(e => setErr("3D dosyaları yüklenemedi: " + e.message));
         return () => { dead = !0; api.current && api.current.dispose(), api.current = null; };
     }, []);
-    P.useEffect(() => { api.current && api.current.update({ scenes: pr.scenes, current: pr.currentIndex, aspect: pr.aspect, prompt, playing: pr.isPlaying, busy: pr.isGenerating || pr.isExporting, progress: pr.isExporting ? pr.exportProgress : pr.genProgress, status: pr.isExporting ? "Video oluşturuluyor…" : pr.genStatus, total: pr.totalDuration }); });
+    P.useEffect(() => { api.current && api.current.update({ scenes: pr.scenes, current: pr.currentIndex, aspect: pr.aspect, prompt, playing: pr.isPlaying, busy: pr.isGenerating || pr.isExporting, progress: pr.isExporting ? pr.exportProgress : pr.genProgress, status: pr.isExporting ? "Video oluşturuluyor…" : pr.genStatus, total: pr.totalDuration, paused: !!pr.isExporting }); });
     P.useEffect(() => { if (panel && panel.kind === "scene" && panel.index >= pr.scenes.length) setPanel(pr.scenes.length ? { kind: "scene", index: pr.scenes.length - 1 } : null); }, [pr.scenes.length]);
     P.useEffect(() => { const k = e => { if (e.key === "Escape") setPanel(null); }; window.addEventListener("keydown", k); return () => window.removeEventListener("keydown", k); }, []);
     const camTo = (c) => { setCam(c); api.current && api.current.setCamera(c); };
     const openScene = (i) => { if (i < 0) return; pr.onSelect(i), setPanel({ kind: "scene", index: i }); api.current && cam === "scene" && api.current.focusScene(i); };
     const n = pr.scenes.length;
-    const insL = monOpen ? (pr.aspect === "portrait" ? 240 : 360) : 0, insR = panel ? 424 : 0;
+    const insL = monOpen ? (pr.aspect === "portrait" ? 240 : 360) : 0, insR = panel ? (panel.kind === "ai" ? 472 : 424) : 0;
     P.useEffect(() => { api.current && api.current.setInsets({ l: insL, r: insR, t: 100, b: 76 }); }, [insL, insR, ready]);
     const dockStyle = { left: `calc(${insL}px + (100% - ${insL + insR}px) / 2)`, maxWidth: `calc(100% - ${insL + insR + 30}px)` };
     return fxH("div", { className: `fx-root ${panel ? "has-panel" : ""}` },
         fxH("div", { className: "fx-scene", ref: host }),
         fxH("div", { className: "fx-vignette" }),
-        fxH("div", { className: "fx-heading" }, fxH("i", null), "Video fabrikası", fxH("span", null, n, " SAHNE · ", Math.round(pr.totalDuration), " SN")),
+        fxH("div", { className: "fx-heading" }, fxH("i", null), "Video fabrikası", fxH("span", null, n, " SAHNE · ", Math.round(pr.totalDuration), " SN"), active && fxH("button", { type: "button", className: "fx-proj", onClick: () => setBoardOpen(!0), title: "Üretim panosunu aç" }, fxH("em", { className: active.series }, PB_SERIES[active.series] || ""), active.title.slice(0, 60), fxH("small", null, (PB_STAGES.find(x => x[0] === active.stage) || [])[1]))),
         fxH("div", { className: "fx-hint" }, n ? "Bir sahneye ya da istasyona tıkla · sürükle: döndür · tekerlek: yakınlaş" : "Başlamak için soldaki SENARYO istasyonuna tıkla"),
         !ready && !err && fxH("div", { className: "fx-loading" }, "Fabrika kuruluyor…"),
         err && fxH("div", { className: "fx-error" }, fxH("p", null, err), fxH("button", { type: "button", className: "fx-btn", onClick: () => pr.setLayout("classic") }, "Klasik görünüme geç")),
@@ -6138,11 +6177,335 @@ function FactoryView(pr) {
                 pr.scenes.map((s, i) => fxH("button", { key: s.id || i, type: "button", className: `fx-thumb ${i === pr.currentIndex ? "on" : ""}`, onClick: () => openScene(i), title: (s.voiceText || "").slice(0, 120) }, s.imageUrl ? fxH("img", { src: s.imageUrl, alt: "" }) : fxH("span", { className: "noimg" }, "?"), fxH("b", null, i + 1), fxH("small", null, (+s.duration || 10), "s"))),
                 fxH("button", { type: "button", className: "fx-thumb add", title: "Yeni sahne ekle", onClick: () => { pr.onAdd(); setTimeout(() => openScene(n), 60); } }, "＋")),
             fxH("div", { className: "fx-bar" },
+                fxH("button", { type: "button", onClick: () => setBoardOpen(!0) }, "📋 Pano"),
                 fxH("button", { type: "button", onClick: () => setPanel({ kind: "script" }) }, "✍️ Senaryo"),
+                fxH("button", { type: "button", onClick: () => setPanel({ kind: "ai" }) }, "🧠 Yapay Zekâ"),
                 fxH("button", { type: "button", onClick: () => setPanel({ kind: "export" }), className: "accent" }, "🎬 Montaj"),
                 fxH("button", { type: "button", onClick: () => pr.setLayout("classic"), title: "Eski düzenleyici görünümü" }, "☰ Klasik"))),
         panel && panel.kind === "scene" ? fxH(FxSceneEditor, { pr, index: panel.index, onNav: openScene, onClose: () => setPanel(null) }) :
-            panel ? fxH(FxStationPanel, { pr, kind: panel.kind, onClose: () => setPanel(null), prompt, setPrompt, onOpenScene: openScene }) : null);
+            panel ? fxH(FxStationPanel, { pr, kind: panel.kind, onClose: () => setPanel(null), prompt, setPrompt, onOpenScene: openScene }) : null,
+        boardOpen && fxH(FxBoard, { onClose: () => setBoardOpen(!1), onOpen: openCard, activeId }));
+}
+
+// ===================================================================== v2.0: Yapay zekâ bağlantıları
+const AI_KEY_LINKS = { gemini: "https://aistudio.google.com/apikey", openai: "https://platform.openai.com/api-keys", anthropic: "https://console.anthropic.com/settings/keys", groq: "https://console.groq.com/keys", openrouter: "https://openrouter.ai/keys", elevenlabs: "https://elevenlabs.io/app/settings/api-keys", fal: "https://fal.ai/dashboard/keys", replicate: "https://replicate.com/account/api-tokens" };
+const AI_NAMES = { free: "Ücretsiz", gemini: "Google Gemini", openai: "OpenAI", anthropic: "Claude (Anthropic)", groq: "Groq", openrouter: "OpenRouter", elevenlabs: "ElevenLabs", fal: "fal.ai", replicate: "Replicate", edge: "Edge sesleri", none: "Kapalı" };
+const AI_DEFAULTS = {
+    keys: {}, text: "free", image: "free", video: "none",
+    textModel: { gemini: "gemini-2.5-flash", openai: "gpt-5-mini", anthropic: "claude-sonnet-5-5", groq: "llama-3.3-70b-versatile", openrouter: "google/gemini-2.5-flash" },
+    imageModel: { gemini: "gemini-2.5-flash-image", openai: "gpt-image-1", fal: "fal-ai/flux-pro/v1.1", replicate: "black-forest-labs/flux-1.1-pro" },
+    videoModel: { fal: "fal-ai/kling-video/v2.1/standard/image-to-video", replicate: "kwaivgi/kling-v2.1" },
+    director: !0, hiRes: !0, elevenVoices: [], elevenModel: "eleven_multilingual_v2", openaiTtsModel: "gpt-4o-mini-tts"
+};
+const SXAI = {
+    cfg: (() => { let c = {}; try { c = JSON.parse(localStorage.getItem("aivs_ai") || "{}"); } catch { } const d = JSON.parse(JSON.stringify(AI_DEFAULTS)); const r = { ...d, ...c, keys: { ...d.keys, ...(c.keys || {}) }, textModel: { ...d.textModel, ...(c.textModel || {}) }, imageModel: { ...d.imageModel, ...(c.imageModel || {}) }, videoModel: { ...d.videoModel, ...(c.videoModel || {}) } }; try { const rk = localStorage.getItem("replicate_api_key"); rk && !r.keys.replicate && /^r8_/.test(rk) && (r.keys.replicate = rk); } catch { } return r; })(),
+    listeners: new Set(), lastError: "", tcache: new Map(),
+    set(patch) { this.cfg = { ...this.cfg, ...patch }; try { localStorage.setItem("aivs_ai", JSON.stringify(this.cfg)); } catch { } this.listeners.forEach(f => f(this.cfg)); },
+    setKey(k, v) { this.set({ keys: { ...this.cfg.keys, [k]: (v || "").trim() } }); },
+    key(k) { return (this.cfg.keys[k] || "").trim(); },
+    err(where, e) { this.lastError = `${where}: ${e && e.message || e}`; console.warn("[AI]", this.lastError); this.listeners.forEach(f => f(this.cfg)); },
+    async ext(url, opts = {}) {
+        const r = await (SXAI._fetch || fetch)("/api/ext?u=" + encodeURIComponent(url), opts);
+        if (!r.ok) { let m = ""; try { const t = await r.text(); try { const j = JSON.parse(t); m = (j.error && (j.error.message || j.error)) || j.detail || j.message || t; } catch { m = t; } } catch { } throw new Error(`HTTP ${r.status} ${String(typeof m === "string" ? m : JSON.stringify(m)).slice(0, 200)}`); }
+        return r;
+    },
+    async json(url, body, headers = {}, method = "POST") { const r = await this.ext(url, { method, headers: { "Content-Type": "application/json", ...headers }, body: body == null ? void 0 : JSON.stringify(body) }); return r.json(); },
+    // ------------------------------------------------ text
+    async llm(system, prompt, provider = this.cfg.text) {
+        const m = this.cfg.textModel[provider], k = this.key(provider === "anthropic" ? "anthropic" : provider);
+        if (provider !== "free" && !k) throw new Error(AI_NAMES[provider] + " anahtarı girilmemiş");
+        if (provider === "gemini") { const j = await this.json(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(m)}:generateContent`, { systemInstruction: { parts: [{ text: system || "" }] }, contents: [{ role: "user", parts: [{ text: prompt }] }] }, { "x-goog-api-key": k }); const t = ((j.candidates || [])[0] || {}).content; const out = t && t.parts ? t.parts.map(p => p.text || "").join("") : ""; if (!out) throw new Error("Boş yanıt"); return out; }
+        if (provider === "anthropic") { const j = await this.json("https://api.anthropic.com/v1/messages", { model: m, max_tokens: 8000, system: system || void 0, messages: [{ role: "user", content: prompt }] }, { "x-api-key": k, "anthropic-version": "2023-06-01" }); const out = (j.content || []).filter(c => c.type === "text").map(c => c.text).join(""); if (!out) throw new Error("Boş yanıt"); return out; }
+        if (provider === "openai" || provider === "groq" || provider === "openrouter") {
+            const url = { openai: "https://api.openai.com/v1/chat/completions", groq: "https://api.groq.com/openai/v1/chat/completions", openrouter: "https://openrouter.ai/api/v1/chat/completions" }[provider];
+            const j = await this.json(url, { model: m, messages: [...(system ? [{ role: "system", content: system }] : []), { role: "user", content: prompt }] }, { Authorization: "Bearer " + k, ...(provider === "openrouter" ? { "X-Title": "AI Video Studio" } : {}) });
+            const out = (((j.choices || [])[0] || {}).message || {}).content || ""; if (!out) throw new Error("Boş yanıt"); return out;
+        }
+        const r = await (SXAI._fetch || fetch)("/api/llm", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ system, prompt }) });
+        if (!r.ok) throw new Error("Ücretsiz metin servisi yanıt vermedi"); return r.text();
+    },
+    // ------------------------------------------------ images
+    portrait() { return (SX.api.aspect || "portrait") === "portrait"; },
+    async toDataUrl(src, max = 1920, q = .9) {
+        const b = await (await (SXAI._fetch || fetch)(src)).blob();
+        const url = URL.createObjectURL(b);
+        try { const im = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = url; }); const k = Math.min(1, max / Math.max(im.width, im.height)); const c = document.createElement("canvas"); c.width = Math.round(im.width * k), c.height = Math.round(im.height * k); c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); return c.toDataURL("image/jpeg", q); } finally { URL.revokeObjectURL(url); }
+    },
+    async image(prompt, provider = this.cfg.image) {
+        const style = (SX_STYLES[SX.studio.imageStyle] || SX_STYLES.cinematic)[1], full = `${prompt}, ${style}, no text, no watermark`, pt = this.portrait();
+        if (provider === "free" || !provider) return sxImageUrl(prompt, Math.floor(Math.random() * 1e6));
+        const k = this.key(provider); if (!k) throw new Error(AI_NAMES[provider] + " anahtarı girilmemiş");
+        const m = this.cfg.imageModel[provider];
+        if (provider === "gemini") {
+            const j = await this.json(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(m)}:generateContent`, { contents: [{ role: "user", parts: [{ text: full }] }], generationConfig: { responseModalities: ["IMAGE"], imageConfig: { aspectRatio: pt ? "9:16" : "16:9" } } }, { "x-goog-api-key": k });
+            const parts = ((((j.candidates || [])[0] || {}).content) || {}).parts || [], p = parts.find(x => x.inlineData || x.inline_data);
+            if (!p) throw new Error("Görsel dönmedi (" + (((j.candidates || [])[0] || {}).finishReason || "boş") + ")");
+            const d = p.inlineData || p.inline_data; return this.toDataUrl(`data:${d.mimeType || d.mime_type || "image/png"};base64,${d.data}`);
+        }
+        if (provider === "openai") {
+            const j = await this.json("https://api.openai.com/v1/images/generations", { model: m, prompt: full, size: pt ? "1024x1536" : "1536x1024", n: 1 }, { Authorization: "Bearer " + k });
+            const d = (j.data || [])[0] || {}; if (d.b64_json) return this.toDataUrl("data:image/png;base64," + d.b64_json); if (d.url) return this.toDataUrl("/api/ext?u=" + encodeURIComponent(d.url)); throw new Error("Görsel dönmedi");
+        }
+        if (provider === "fal") {
+            const j = await this.json("https://fal.run/" + m, { prompt: full, image_size: pt ? "portrait_16_9" : "landscape_16_9", aspect_ratio: pt ? "9:16" : "16:9", num_images: 1, enable_safety_checker: !0 }, { Authorization: "Key " + k });
+            const u = ((j.images || [])[0] || {}).url || (j.image || {}).url; if (!u) throw new Error("Görsel dönmedi"); return this.toDataUrl(u.startsWith("data:") ? u : "/api/ext?u=" + encodeURIComponent(u));
+        }
+        if (provider === "replicate") {
+            const out = await this.replicate(m, { prompt: full, aspect_ratio: pt ? "9:16" : "16:9", output_format: "jpg" });
+            const u = Array.isArray(out) ? out[0] : out; if (!u) throw new Error("Görsel dönmedi"); return this.toDataUrl("/api/ext?u=" + encodeURIComponent(u));
+        }
+        throw new Error("Bilinmeyen görsel servisi");
+    },
+    async replicate(model, input, onStatus) {
+        const k = this.key("replicate"); if (!k) throw new Error("Replicate anahtarı girilmemiş");
+        const h = { Authorization: "Bearer " + k };
+        let j = await this.json(`https://api.replicate.com/v1/models/${model}/predictions`, { input }, { ...h, Prefer: "wait=55" });
+        const t0 = Date.now();
+        while (j.status !== "succeeded") {
+            if (j.status === "failed" || j.status === "canceled") throw new Error(j.error || "Replicate işi başarısız");
+            if (Date.now() - t0 > 15 * 60e3) throw new Error("Zaman aşımı");
+            onStatus && onStatus(j.status === "processing" ? "işleniyor" : "sırada", Date.now() - t0);
+            await new Promise(r => setTimeout(r, 4000));
+            j = await this.json(j.urls.get, null, h, "GET");
+        }
+        return j.output;
+    },
+    // ------------------------------------------------ voices
+    voiceList() {
+        const v = [];
+        this.key("elevenlabs") && (this.cfg.elevenVoices.length ? this.cfg.elevenVoices : [["pNInz6obpgDQGcFmaJgB", "Adam"], ["JBFqnCBsd6RMkjVDRZzb", "George"], ["onwK4e9ZLuTAKqWW03F9", "Daniel"], ["21m00Tcm4TlvDq8ikWAM", "Rachel"], ["EXAVITQu4vr4xnSDxMaL", "Sarah"]]).forEach(([id, n]) => v.push(["eleven:" + id, "⭐ ElevenLabs — " + n]));
+        this.key("openai") && [["onyx", "Onyx (derin erkek)"], ["ash", "Ash (erkek)"], ["echo", "Echo (erkek)"], ["nova", "Nova (kadın)"], ["coral", "Coral (kadın)"], ["shimmer", "Shimmer (kadın)"], ["sage", "Sage (sakin)"]].forEach(([id, n]) => v.push(["openai:" + id, "⭐ OpenAI — " + n]));
+        return v;
+    },
+    async fetchElevenVoices() { const j = await this.json("https://api.elevenlabs.io/v1/voices", null, { "xi-api-key": this.key("elevenlabs") }, "GET"); const list = (j.voices || []).map(x => [x.voice_id, x.name + (x.labels && x.labels.gender ? ` (${x.labels.gender === "male" ? "erkek" : x.labels.gender === "female" ? "kadın" : x.labels.gender})` : "")]); list.length && this.set({ elevenVoices: list }); return list; },
+    tinflight: new Map(),
+    async tts(text, voice, rate = 1) {
+        const ck = voice + "|" + rate + "|" + text; if (this.tcache.has(ck)) return this.tcache.get(ck).slice(0);
+        if (this.tinflight.has(ck)) return (await this.tinflight.get(ck)).slice(0);
+        const job = this._tts(text, voice, rate, ck); this.tinflight.set(ck, job);
+        try { return (await job).slice(0); } finally { this.tinflight.delete(ck); }
+    },
+    tkey(ck) { let h1 = 0x811c9dc5, h2 = 5381; for (let i = 0; i < ck.length; i++) { const c = ck.charCodeAt(i); h1 = Math.imul(h1 ^ c, 16777619) >>> 0; h2 = (Math.imul(h2, 33) + c) >>> 0; } return "tts:" + h1.toString(36) + h2.toString(36) + ck.length; },
+    async _tts(text, voice, rate, ck) {
+        try { const old = await IDB.get(this.tkey(ck)); if (old && old.byteLength) { this.tcache.set(ck, old.slice(0)); return old; } } catch { }
+        let buf;
+        if (voice.startsWith("eleven:")) {
+            const k = this.key("elevenlabs"); if (!k) throw new Error("ElevenLabs anahtarı yok");
+            const r = await this.ext(`https://api.elevenlabs.io/v1/text-to-speech/${voice.slice(7)}?output_format=mp3_44100_128`, { method: "POST", headers: { "Content-Type": "application/json", "xi-api-key": k, Accept: "audio/mpeg" }, body: JSON.stringify({ text, model_id: this.cfg.elevenModel, voice_settings: { stability: .45, similarity_boost: .8, style: .25, use_speaker_boost: !0, speed: Math.min(1.2, Math.max(.7, rate)) } }) });
+            buf = await r.arrayBuffer();
+        } else if (voice.startsWith("openai:")) {
+            const k = this.key("openai"); if (!k) throw new Error("OpenAI anahtarı yok");
+            const r = await this.ext("https://api.openai.com/v1/audio/speech", { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + k }, body: JSON.stringify({ model: this.cfg.openaiTtsModel, voice: voice.slice(7), input: text, response_format: "mp3", speed: Math.min(1.5, Math.max(.7, rate)), instructions: "Türkçe konuş. Akıcı, sıcak ve etkileyici bir belgesel anlatıcısı gibi oku; doğal duraklamalar yap." }) });
+            buf = await r.arrayBuffer();
+        } else throw new Error("Bilinmeyen ses");
+        this.tcache.size > 300 && this.tcache.delete(this.tcache.keys().next().value), this.tcache.set(ck, buf.slice(0));
+        IDB.set(this.tkey(ck), buf.slice(0)).catch(() => { });
+        return buf;
+    },
+    // ------------------------------------------------ image -> video (motion)
+    videoReady() { return this.cfg.video !== "none" && !!this.key(this.cfg.video); },
+    async animate(scene, onStatus = () => { }) {
+        const prov = this.cfg.video, m = this.cfg.videoModel[prov], k = this.key(prov);
+        if (prov === "none" || !k) throw new Error("Önce Yapay Zekâ › Video bölümünden bir servis ve anahtar seç");
+        if (!scene.imageUrl) throw new Error("Sahnenin önce bir resmi olmalı");
+        onStatus("Resim hazırlanıyor…");
+        const img = await this.toDataUrl(scene.imageUrl, 1280, .88);
+        const prompt = `${(scene.visualPrompt || scene.voiceText || "").slice(0, 600)}. Subtle cinematic motion, slow camera push-in, natural movement of people, cloth and atmosphere, consistent with the image, no text.`;
+        let url;
+        if (prov === "fal") {
+            const h = { Authorization: "Key " + k };
+            const q = await this.json("https://queue.fal.run/" + m, { prompt, image_url: img, duration: "5", aspect_ratio: this.portrait() ? "9:16" : "16:9" }, h);
+            const t0 = Date.now(); let st = q;
+            while (!st.status || st.status !== "COMPLETED") {
+                if (Date.now() - t0 > 15 * 60e3) throw new Error("Zaman aşımı");
+                if (st.status === "FAILED" || st.error) throw new Error(st.error || "fal.ai işi başarısız");
+                onStatus(`Video çiziliyor… ${Math.round((Date.now() - t0) / 1e3)} sn` + (st.queue_position != null ? ` · sıra ${st.queue_position}` : ""));
+                await new Promise(r => setTimeout(r, 4000));
+                st = await this.json(q.status_url || `https://queue.fal.run/${m}/requests/${q.request_id}/status`, null, h, "GET");
+            }
+            const out = await this.json(q.response_url || `https://queue.fal.run/${m}/requests/${q.request_id}`, null, h, "GET");
+            url = (out.video || {}).url || ((out.videos || [])[0] || {}).url;
+        } else {
+            const key = { "kwaivgi/kling-v2.1": "start_image", "minimax/hailuo-02": "first_frame_image", "minimax/video-01": "first_frame_image" }[m] || "image";
+            const input = { prompt, [key]: img }; /kling|seedance/.test(m) && (input.duration = 5);
+            const out = await this.replicate(m, input, (s, t) => onStatus(`Video çiziliyor (${s})… ${Math.round(t / 1e3)} sn`));
+            url = Array.isArray(out) ? out[0] : out;
+        }
+        if (!url) throw new Error("Video adresi dönmedi");
+        onStatus("Video indiriliyor…");
+        const r = await (SXAI._fetch || fetch)("/api/cache?u=" + encodeURIComponent(url)), j = await r.json();
+        if (!r.ok || !j.url) throw new Error(j.error || "Video kaydedilemedi");
+        return j.url;
+    },
+    // ------------------------------------------------ "görsel yönetmeni": tutarlı, sinematik promptlar
+    parseJson(t) { const s = String(t || "").replace(/```(json)?/g, ""), a = s.indexOf("{"), b = s.lastIndexOf("}"); if (a < 0 || b < a) throw new Error("JSON yok"); return JSON.parse(s.slice(a, b + 1)); },
+    async directScenes(scenes, onStatus = () => { }) {
+        if (!this.cfg.director || SX.studio.imageSource !== "ai" || !Array.isArray(scenes)) return scenes;
+        const idx = scenes.map((s, i) => [s, i]).filter(([s]) => !s.imageUrl && !s.videoUrl && !s.directed && (s.voiceText || s.visualPrompt)).map(([, i]) => i);
+        if (idx.length < 2) return scenes;
+        const out = scenes.map(s => ({ ...s })), topic = SX.studio.lastTopic || (scenes[0] && (scenes[0].shortTitle || scenes[0].title)) || "";
+        const kids = SX.studio.imageStyle === "cartoon" || scenes.some(s => s.shortSeries === "cocuk"), style = (SX_STYLES[SX.studio.imageStyle] || SX_STYLES.cinematic)[1];
+        let look = "", cast = "";
+        for (let a = 0; a < idx.length; a += 12) {
+            const part = idx.slice(a, a + 12);
+            onStatus(`🎬 Görsel yönetmeni sahneleri planlıyor (${Math.min(idx.length, a + 12)}/${idx.length})…`, Math.round(a / idx.length * 10));
+            const list = part.map((i, k) => ({ n: k + 1, narration: (out[i].voiceText || "").slice(0, 400), draft: (out[i].visualPrompt || "").slice(0, 300) }));
+            const prompt = `Video topic: ${topic}\nVisual style: ${style}\nAudience: ${kids ? "children 5-10, friendly, no violence, no scary imagery" : "general audience; historical accuracy; battles shown without gore"}\n${look ? `Keep this established look: ${look}\nRecurring characters: ${cast}\n` : ""}Scenes (JSON): ${JSON.stringify(list)}\n\nWrite one English image prompt per scene for an AI image generator (${this.portrait() ? "vertical 9:16" : "horizontal 16:9"} frame). Each 45-75 words: main subject and action, setting with era-accurate clothing/architecture/objects, composition and camera angle/lens, lighting and time of day, mood. Describe recurring characters with the SAME fixed appearance every time. Vary shot types (wide, medium, close-up) across scenes. No text, letters, logos or watermarks in the image.\nReturn ONLY JSON: {"look":"one sentence global look: palette, lighting, film/lens feel","characters":"fixed descriptions of recurring characters (or empty)","prompts":["...", "..."]}`;
+            try {
+                const j = this.parseJson(await this.llm("You are an award-winning film director and expert prompt engineer for AI image models. You answer with valid JSON only.", prompt));
+                look = look || String(j.look || ""), cast = cast || String(j.characters || "");
+                (j.prompts || []).forEach((p, k) => { const i = part[k]; i != null && p && String(p).length > 20 && (out[i].visualPrompt = `${String(p).trim()}${look ? ". " + look : ""}`, out[i].directed = !0); });
+            } catch (e) { this.err("Görsel yönetmeni", e); break; }
+        }
+        return out;
+    },
+    async improvePrompt(scene) {
+        const t = await this.llm("You are an expert prompt engineer for AI image models. Answer with the prompt only.", `Rewrite this into one vivid English image prompt (45-75 words) for a ${this.portrait() ? "vertical" : "horizontal"} video frame. Keep it historically/visually accurate. Include subject, action, setting, composition, camera, lighting, mood. No text in image.\nNarration (Turkish): ${scene.voiceText || ""}\nCurrent prompt: ${scene.visualPrompt || ""}`);
+        return t.replace(/^["'\s]+|["'\s]+$/g, "").slice(0, 900);
+    },
+    async test(kind, provider) {
+        if (kind === "text") return (await this.llm("Kısa cevap ver.", "Sadece 'Merhaba' yaz.", provider)).slice(0, 60);
+        if (kind === "image") { const u = await this.image("a lighthouse on a cliff at sunset", provider); return u.startsWith("data:") ? "Görsel geldi ✓" : "Ücretsiz motor ✓"; }
+        if (kind === "voice") { const v = provider === "elevenlabs" ? "eleven:" + ((this.cfg.elevenVoices[0] || [])[0] || "pNInz6obpgDQGcFmaJgB") : "openai:onyx"; const b = await this.tts("Merhaba, bu bir ses denemesi.", v, 1); return `Ses geldi ✓ (${Math.round(b.byteLength / 1024)} KB)`; }
+        if (kind === "video") { if (provider === "fal") { await this.json("https://queue.fal.run/" + this.cfg.videoModel.fal + "/requests/00000000-0000-0000-0000-000000000000/status", null, { Authorization: "Key " + this.key("fal") }, "GET").catch(e => { if (/401|403/.test(e.message)) throw new Error("Anahtar geçersiz"); }); return "Anahtar kabul edildi ✓"; } const j = await this.json("https://api.replicate.com/v1/account", null, { Authorization: "Bearer " + this.key("replicate") }, "GET"); return "Hesap: " + (j.username || "✓"); }
+    }
+};
+// fetch köprüsü: uygulamanın tüm metin ve ses istekleri seçilen servise gider, hata olursa ücretsiz motora düşer
+(() => {
+    const orig = window.fetch.bind(window); SXAI._fetch = orig;
+    window.fetch = async (input, init) => {
+        const url = typeof input === "string" ? input : input && input.url || "";
+        if (url === "/api/llm" && SXAI.cfg.text !== "free" && init && init.body) {
+            try { const b = JSON.parse(init.body); const t = await SXAI.llm(b.system, b.prompt); return new Response(t, { status: 200, headers: { "Content-Type": "text/plain; charset=UTF-8" } }); }
+            catch (e) { SXAI.err("Metin (" + AI_NAMES[SXAI.cfg.text] + ")", e); }
+        }
+        if (url.startsWith("/api/tts?")) {
+            const u = new URL(url, location.origin), v = u.searchParams.get("voice") || "";
+            if (/^(eleven|openai):/.test(v)) {
+                try { const ab = await SXAI.tts(u.searchParams.get("q") || "", v, parseFloat(u.searchParams.get("rate")) || 1); return new Response(ab, { status: 200, headers: { "Content-Type": "audio/mpeg" } }); }
+                catch (e) { SXAI.err("Ses", e); u.searchParams.set("voice", "edge:tr-TR-AhmetNeural"); return orig(u.pathname + u.search, init); }
+            }
+        }
+        return orig(input, init);
+    };
+})();
+function useAI() { const [c, set] = P.useState(SXAI.cfg); P.useEffect(() => { const f = v => set({ ...v }); SXAI.listeners.add(f); return () => SXAI.listeners.delete(f); }, []); return c; }
+const AI_TEXT_P = ["free", "gemini", "anthropic", "openai", "groq", "openrouter"], AI_IMG_P = ["free", "gemini", "openai", "fal", "replicate"], AI_VID_P = ["none", "fal", "replicate"];
+const AI_HINT = {
+    text: { free: "Pollinations · anahtar gerekmez", gemini: "Ücretsiz kotası var · çok iyi Türkçe", anthropic: "En iyi senaryo kalitesi", openai: "GPT modelleri", groq: "Çok hızlı · ücretsiz kota", openrouter: "Yüzlerce model tek anahtar" },
+    image: { free: "Flux (Pollinations) · anahtar gerekmez", gemini: "Nano Banana · tutarlı karakterler", openai: "gpt-image-1 · çok detaylı", fal: "Flux Pro 1.1 · sinematik", replicate: "Flux 1.1 Pro ve diğerleri" },
+    video: { none: "Resimler Ken Burns hareketiyle oynar", fal: "Kling / Hailuo / Seedance · 5 sn klip", replicate: "Kling / Hailuo / Seedance · 5 sn klip" }
+};
+const AI_VIDEO_MODELS = { fal: [["fal-ai/kling-video/v2.1/standard/image-to-video", "Kling 2.1 Standart (önerilen)"], ["fal-ai/kling-video/v2.1/pro/image-to-video", "Kling 2.1 Pro (en kaliteli)"], ["fal-ai/minimax/hailuo-02/standard/image-to-video", "Hailuo 02"], ["fal-ai/bytedance/seedance/v1/lite/image-to-video", "Seedance Lite (ucuz)"]], replicate: [["kwaivgi/kling-v2.1", "Kling 2.1 (önerilen)"], ["minimax/hailuo-02", "Hailuo 02"], ["bytedance/seedance-1-lite", "Seedance Lite (ucuz)"], ["wan-video/wan-2.2-i2v-fast", "Wan 2.2 hızlı (ucuz)"]] };
+function AiKey({ id }) {
+    const c = useAI(), [show, setShow] = P.useState(!1);
+    return fxH("div", { className: "ai-key" }, fxH("input", { className: "fx-input", type: show ? "text" : "password", placeholder: AI_NAMES[id] + " API anahtarı", value: c.keys[id] || "", onChange: e => SXAI.setKey(id, e.target.value), autoComplete: "off", spellCheck: !1 }), fxH("button", { type: "button", className: "fx-btn", onClick: () => setShow(!show), title: "Göster/gizle" }, show ? "🙈" : "👁"), fxH("a", { className: "fx-btn", href: AI_KEY_LINKS[id], target: "_blank", rel: "noreferrer", title: "Anahtar al" }, "Anahtar al ↗"));
+}
+function AiTest({ kind, provider }) {
+    const [st, setSt] = P.useState("");
+    return fxH("div", { className: "fx-row" }, fxH("button", { type: "button", className: "fx-btn", onClick: async () => { setSt("Deneniyor…"); try { setSt("✓ " + await SXAI.test(kind, provider)); } catch (e) { setSt("✗ " + e.message); } } }, "Bağlantıyı dene"), st && fxH("span", { className: `fx-note ${st[0] === "✗" ? "warn" : ""}` }, st));
+}
+function AiSection({ title, sub, kind, list, model }) {
+    const c = useAI(), cur = c[kind];
+    const keyId = cur === "free" || cur === "none" ? null : cur;
+    return fxH("section", { className: "ai-sec" },
+        fxH("h4", null, title, fxH("small", null, sub)),
+        fxH("div", { className: "ai-opts" }, list.map(p => fxH("button", { key: p, type: "button", className: `ai-opt ${cur === p ? "on" : ""}`, onClick: () => SXAI.set({ [kind]: p }) }, fxH("b", null, AI_NAMES[p], (p !== "free" && p !== "none" && c.keys[p]) ? " ●" : ""), fxH("small", null, AI_HINT[kind][p])))),
+        keyId && fxH(AiKey, { id: keyId }),
+        keyId && model && (kind === "video" ? fxH(FxField, { label: "Model" }, fxH("select", { className: "fx-input", value: c.videoModel[keyId], onChange: e => SXAI.set({ videoModel: { ...c.videoModel, [keyId]: e.target.value } }) }, AI_VIDEO_MODELS[keyId].map(([v, t]) => fxH("option", { key: v, value: v }, t)), !AI_VIDEO_MODELS[keyId].some(x => x[0] === c.videoModel[keyId]) && fxH("option", { value: c.videoModel[keyId] }, c.videoModel[keyId])))
+            : fxH(FxField, { label: "Model", hint: "değiştirmen gerekmez" }, fxH("input", { className: "fx-input", value: c[model][keyId] || "", onChange: e => SXAI.set({ [model]: { ...c[model], [keyId]: e.target.value } }) }))),
+        keyId && fxH(AiTest, { kind, provider: keyId }));
+}
+function FxAiPanel() {
+    const c = useAI(), st = useStudio(), [vs, setVs] = P.useState("");
+    return fxH("div", { className: "fx-dbody ai-body" },
+        fxH("div", { className: "fx-note" }, "Ücretsiz motorlar anahtarsız çalışır. Daha kaliteli sonuç için bir servisin anahtarını gir; ücretli servisler kendi hesabından ücret keser. Bir servis hata verirse uygulama otomatik olarak ücretsiz motora geçer."),
+        SXAI.lastError && fxH("div", { className: "fx-note warn" }, "Son hata — ", SXAI.lastError),
+        fxH(AiSection, { title: "✍️ Senaryo ve metin", sub: "senaryo, bölüm planı, başlık ve açıklama", kind: "text", list: AI_TEXT_P, model: "textModel" }),
+        fxH(AiSection, { title: "🎨 Görsel", sub: "sahne resimleri", kind: "image", list: AI_IMG_P, model: "imageModel" }),
+        fxH("section", { className: "ai-sec" },
+            fxH("h4", null, "🎙️ Seslendirme", fxH("small", null, "Edge sesleri ücretsiz; aşağıdakiler stüdyo kalitesinde")),
+            fxH("div", { className: "ai-sub" }, "ElevenLabs — en doğal Türkçe sesler"), fxH(AiKey, { id: "elevenlabs" }),
+            c.keys.elevenlabs && fxH("div", { className: "fx-row" }, fxH("button", { type: "button", className: "fx-btn", onClick: async () => { setVs("Getiriliyor…"); try { const l = await SXAI.fetchElevenVoices(); setVs(`✓ ${l.length} ses eklendi (Ses istasyonunda)`); } catch (e) { setVs("✗ " + e.message); } } }, "Hesabımdaki sesleri getir"), vs && fxH("span", { className: "fx-note" }, vs)),
+            c.keys.elevenlabs && fxH(AiTest, { kind: "voice", provider: "elevenlabs" }),
+            fxH("div", { className: "ai-sub" }, "OpenAI sesleri"), fxH("div", { className: "fx-note" }, "OpenAI anahtarını Metin ya da Görsel bölümünden girmen yeterli."),
+            c.keys.openai && fxH(AiTest, { kind: "voice", provider: "openai" }),
+            fxH("div", { className: "fx-note" }, "Sesi seçmek için SES istasyonuna tıkla.")),
+        fxH(AiSection, { title: "🎥 Video hareketi", sub: "resmi gerçek videoya çevirir (sahne başına)", kind: "video", list: AI_VID_P, model: "videoModel" }),
+        fxH("section", { className: "ai-sec" },
+            fxH("h4", null, "✨ Kalite", fxH("small", null, "ücretsiz motorlarla da çalışır")),
+            fxH("label", { className: "fx-switch" }, fxH("input", { type: "checkbox", checked: c.director, onChange: e => SXAI.set({ director: e.target.checked }) }), fxH("span", null, fxH("b", null, "Görsel yönetmeni"), " — sahneleri birlikte planlar: aynı karakterler, tutarlı ışık ve renk, değişen kamera açıları")),
+            fxH("label", { className: "fx-switch" }, fxH("input", { type: "checkbox", checked: c.hiRes, onChange: e => SXAI.set({ hiRes: e.target.checked }) }), fxH("span", null, fxH("b", null, "Yüksek çözünürlük"), " — 1080×1920 görseller")),
+            fxH("label", { className: "fx-switch" }, fxH("input", { type: "checkbox", checked: st.imageSource === "ai", onChange: e => SX.set({ imageSource: e.target.checked ? "ai" : "web" }) }), fxH("span", null, fxH("b", null, "Görselleri yapay zekâ çizsin"), " (kapalıysa Wikipedia/hazır görseller)")),
+            fxH(FxField, { label: "Görsel tarzı" }, fxH("select", { className: "fx-input", value: st.imageStyle, onChange: e => SX.set({ imageStyle: e.target.value }) }, Object.entries(SX_STYLES).map(([k, v]) => fxH("option", { key: k, value: k }, v[0]))))));
+}
+
+// ===================================================================== v2.0: Üretim panosu (fikirden yayına)
+const PB_STAGES = [["fikir", "Fikir"], ["arastirma", "Araştırma & senaryo"], ["uretim", "Üretim"], ["kurgu", "Kurgu"], ["hazir", "Yayına hazır"], ["yayinda", "Yayında"]];
+const PB_SERIES = { tarih: "Tarih", icat: "İcatlar", cocuk: "Çocuk" };
+const PB_ORDER = Object.fromEntries(PB_STAGES.map(([k], i) => [k, i]));
+const PB = {
+    cards: [], listeners: new Set(), loaded: !1,
+    async load() { try { this.cards = (await IDB.get("board")) || []; } catch { this.cards = []; } this.loaded = !0; this.emit(); return this.cards; },
+    emit() { this.listeners.forEach(f => f(this.cards)); },
+    async save() { try { await IDB.set("board", this.cards); } catch (e) { console.warn("Pano kaydedilemedi", e); } this.emit(); },
+    upsert(c) { const now = new Date().toISOString(); const i = this.cards.findIndex(x => x.id === c.id); i >= 0 ? this.cards[i] = { ...this.cards[i], ...c, updatedAt: now } : this.cards.push({ id: "v_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), stage: "fikir", series: "tarih", format: "kisa", platforms: ["YouTube"], notes: "", date: "", createdAt: now, ...c, updatedAt: now }); this.cards = [...this.cards]; return this.save(); },
+    remove(id) { this.cards = this.cards.filter(x => x.id !== id); IDB.del("proj:" + id).catch(() => { }); try { localStorage.getItem("aivs_active_card") === id && localStorage.removeItem("aivs_active_card"); } catch { } return this.save(); },
+    get(id) { return this.cards.find(x => x.id === id); },
+    // aşama yalnızca ileri gider (elle geri alınabilir)
+    advance(id, stage) { const c = this.get(id); if (c && PB_ORDER[stage] > PB_ORDER[c.stage] && c.stage !== "yayinda") return this.upsert({ id, stage }); },
+    async importPlans() { let plans = []; try { plans = await (await fetch("/plans.json")).json(); } catch { } plans = Array.isArray(plans) ? plans : plans.plans || []; let n = 0; for (const p of plans) { const t = (p.title || "").trim(); if (!t || this.cards.some(c => c.title.trim() === t)) continue; this.cards.push({ id: "v_" + Date.now().toString(36) + (n++), title: t, series: p.series || "tarih", stage: p.stage === "uretim" ? "arastirma" : (PB_ORDER[p.stage] != null ? p.stage : "fikir"), format: "kisa", date: p.date || "", platforms: p.platforms || ["YouTube", "TikTok", "Instagram"], notes: (p.notes || "") + (Array.isArray(p.sources) && p.sources.length ? "\n\nKaynaklar:\n" + p.sources.map(x => typeof x === "string" ? x : (x.title || "") + " " + (x.url || "")).join("\n") : ""), createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() }); } await this.save(); return n; },
+    exportJson() { return JSON.stringify(this.cards.map(({ title, series, stage, format, date, platforms, notes }) => ({ title, series, stage, format, date, platforms, notes })), null, 2); }
+};
+PB.load();
+function usePB() { const [c, set] = P.useState(PB.cards); P.useEffect(() => { const f = v => set([...v]); PB.listeners.add(f); PB.loaded && f(PB.cards); return () => PB.listeners.delete(f); }, []); return c; }
+function pbFmt(d) { if (!d) return ""; const [y, m, dd] = d.split("-"); return `${dd}.${m}.${y}`; }
+function FxCardForm({ card, onClose, onOpen }) {
+    const [f, setF] = P.useState(() => ({ title: "", series: "tarih", stage: "fikir", format: "kisa", date: "", platforms: ["YouTube", "TikTok", "Instagram"], notes: "", ...(card || {}) })), [del, setDel] = P.useState(!1);
+    const up = p => setF({ ...f, ...p });
+    const save = async (open) => { if (!f.title.trim()) return; await PB.upsert({ ...f, title: f.title.trim() }); const saved = card ? PB.get(card.id) : PB.cards[PB.cards.length - 1]; open ? onOpen(saved) : onClose(); };
+    return fxH("div", { className: "pb-modal", onClick: e => e.target === e.currentTarget && onClose() },
+        fxH("div", { className: "pb-form" },
+            fxH("h3", null, card ? "Videoyu düzenle" : "Yeni video"),
+            fxH(FxField, { label: "Başlık / konu" }, fxH("input", { className: "fx-input", autoFocus: !0, maxLength: 160, value: f.title, placeholder: "Örn. İstanbul'un Fethi: 53 günlük kuşatma", onChange: e => up({ title: e.target.value }) })),
+            fxH("div", { className: "fx-grid2" },
+                fxH(FxField, { label: "Seri" }, fxH("select", { className: "fx-input", value: f.series, onChange: e => up({ series: e.target.value }) }, Object.entries(PB_SERIES).map(([k, v]) => fxH("option", { key: k, value: k }, v)))),
+                fxH(FxField, { label: "Aşama" }, fxH("select", { className: "fx-input", value: f.stage, onChange: e => up({ stage: e.target.value }) }, PB_STAGES.map(([k, v]) => fxH("option", { key: k, value: k }, v))))),
+            fxH("div", { className: "fx-grid2" },
+                fxH(FxField, { label: "Format" }, fxH("select", { className: "fx-input", value: f.format, onChange: e => up({ format: e.target.value }) }, fxH("option", { value: "kisa" }, "Kısa (≤60 sn, 9:16)"), fxH("option", { value: "uzun" }, "Uzun (YouTube, 16:9)"))),
+                fxH(FxField, { label: "Yayın tarihi" }, fxH("input", { className: "fx-input", type: "date", value: f.date || "", onChange: e => up({ date: e.target.value }) }))),
+            fxH("div", { className: "fx-chips" }, ["YouTube", "TikTok", "Instagram"].map(p => fxH("button", { key: p, type: "button", className: `fx-chip ${f.platforms.includes(p) ? "on" : ""}`, onClick: () => up({ platforms: f.platforms.includes(p) ? f.platforms.filter(x => x !== p) : [...f.platforms, p] }) }, p))),
+            fxH(FxField, { label: "Notlar", hint: "kaynaklar, doğrulanmış bilgiler, fikirler" }, fxH("textarea", { className: "fx-input", rows: 6, maxLength: 6000, value: f.notes, onChange: e => up({ notes: e.target.value }) })),
+            fxH("div", { className: "pb-actions" },
+                card ? fxH("button", { type: "button", className: "fx-btn danger", onClick: async () => { if (!del) return setDel(!0); await PB.remove(card.id); onClose(); } }, del ? "Silmek için tekrar bas" : "Sil") : fxH("span"),
+                fxH("div", { className: "fx-row" }, fxH("button", { type: "button", className: "fx-btn", onClick: onClose }, "Vazgeç"), fxH("button", { type: "button", className: "fx-btn", disabled: !f.title.trim(), onClick: () => save(!1) }, "Kaydet"), fxH("button", { type: "button", className: "fx-btn primary", disabled: !f.title.trim(), onClick: () => save(!0) }, "🏭 Kaydet ve üret")))));
+}
+function FxBoard({ onClose, onOpen, activeId }) {
+    const cards = usePB(), [filter, setFilter] = P.useState("hepsi"), [edit, setEdit] = P.useState(null), [msg, setMsg] = P.useState(""), [drag, setDrag] = P.useState(null);
+    const list = cards.filter(c => filter === "hepsi" || c.series === filter), today = new Date().toISOString().slice(0, 10);
+    const late = list.filter(c => c.stage !== "yayinda" && c.date && c.date < today).length;
+    return fxH("div", { className: "pb-root" },
+        fxH("div", { className: "pb-head" },
+            fxH("div", null, fxH("small", null, "ÜRETİM PANOSU"), fxH("h2", null, "Fikirden yayına"), fxH("div", { className: "pb-stats" }, fxH("span", null, fxH("b", null, list.length), " video"), fxH("span", null, fxH("b", null, list.filter(c => c.stage === "yayinda").length), " yayında"), fxH("span", null, fxH("b", null, list.filter(c => c.stage !== "yayinda" && c.date >= today).length), " planlı"), late ? fxH("span", { className: "late" }, fxH("b", null, late), " tarihi geçmiş") : null)),
+            fxH("div", { className: "fx-row" },
+                fxH("div", { className: "fx-bar" }, [["hepsi", "Hepsi"], ["tarih", "Tarih"], ["icat", "İcatlar"], ["cocuk", "Çocuk"]].map(([k, t]) => fxH("button", { key: k, type: "button", "aria-pressed": filter === k, onClick: () => setFilter(k) }, t))),
+                fxH("button", { type: "button", className: "fx-btn", onClick: async () => { const n = await PB.importPlans(); setMsg(n ? `${n} plan panoya eklendi.` : "Eklenecek yeni plan yok."); } }, "⤓ Planları içe aktar"),
+                fxH("button", { type: "button", className: "fx-btn", onClick: async () => { try { await navigator.clipboard.writeText(PB.exportJson()); setMsg("Pano JSON olarak kopyalandı — Claude'a yapıştırıp çevrimiçi panoya aktartabilirsin."); } catch { setMsg("Kopyalanamadı."); } } }, "⧉ Dışa aktar"),
+                fxH("button", { type: "button", className: "fx-btn primary", onClick: () => setEdit({}) }, "+ Yeni video"),
+                fxH("button", { type: "button", className: "fx-btn", onClick: onClose, title: "Fabrikaya dön" }, "✕"))),
+        msg && fxH("div", { className: "fx-note", style: { padding: "0 24px" } }, msg),
+        !cards.length && fxH("div", { className: "pb-empty" }, "Pano boş. ", fxH("b", null, "“Planları içe aktar”"), " ile içerik planlarını getir ya da ", fxH("b", null, "“+ Yeni video”"), " ile ilk fikrini ekle. Bir karta “Üret” dediğinde fabrika o video için açılır; senaryo, görsel ve video adımlarında kart kendiliğinden ilerler."),
+        fxH("div", { className: "pb-cols" }, PB_STAGES.map(([k, label]) => {
+            const items = list.filter(c => c.stage === k).sort((a, b) => (a.date || "9999").localeCompare(b.date || "9999"));
+            return fxH("section", { key: k, className: `pb-col ${drag ? "drop" : ""}`, onDragOver: e => e.preventDefault(), onDrop: e => { e.preventDefault(); drag && (PB.upsert({ id: drag, stage: k }), setDrag(null)); } },
+                fxH("h3", null, label, fxH("span", null, items.length)),
+                items.map(c => fxH("div", { key: c.id, className: `pb-card ${c.series} ${c.id === activeId ? "active" : ""}`, draggable: !0, onDragStart: () => setDrag(c.id), onDragEnd: () => setDrag(null), onClick: () => setEdit(c) },
+                    fxH("b", null, c.title),
+                    fxH("div", { className: "pb-meta" }, fxH("span", { className: `pill ${c.series}` }, PB_SERIES[c.series] || ""), fxH("span", { className: "pill" }, c.format === "uzun" ? "Uzun" : "Kısa"), (c.platforms || []).map(p => fxH("span", { key: p, className: "pill" }, p))),
+                    fxH("div", { className: "pb-foot" }, c.date ? fxH("span", { className: `pb-date ${c.stage !== "yayinda" && c.date < today ? "late" : ""}` }, pbFmt(c.date)) : fxH("span"), k !== "yayinda" && fxH("button", { type: "button", className: "pb-go", onClick: e => { e.stopPropagation(); onOpen(c); } }, c.id === activeId ? "Açık ▸" : "Üret ▸")))),
+                !items.length && fxH("div", { className: "pb-none" }, "Boş"));
+        })),
+        edit && fxH(FxCardForm, { card: edit.id ? edit : null, onClose: () => setEdit(null), onOpen: c => { setEdit(null); onOpen(c); } }));
 }
 
 function vm() { const [e, t] = P.useState("multiScene"), [n, r] = P.useState("malazgirt"), [i, l] = P.useState("portrait"), [a, s] = P.useState(!1), [u, d] = P.useState("cinematic"), [h, m] = P.useState("cinematic"), [y, S] = P.useState(.35), [w, k] = P.useState(.95), [v, p] = P.useState([]), [c, f] = P.useState(0), [g, x] = P.useState(0), [N, E] = P.useState(!1), [T, _] = P.useState(!1), [A, I] = P.useState(0), [te, M] = P.useState(""), [D, H] = P.useState("scenes"), [ce, Mt] = P.useState([]), [z, O] = P.useState(() => { try {
@@ -6177,7 +6540,7 @@ catch { } if (!oOn || !oText.trim())
     return; let C = !0; const L = setTimeout(async () => { const ne = await mm.measureScenes([{ voiceText: oText }]); C && setOVd(ne[0] || null); }, 700); return () => { C = !1, clearTimeout(L); }; }, [oOn, oText, z, w]); P.useEffect(() => { const C = () => { const ne = be.getTurkishVoices(), K = be.getAllVoices(), de = ne.length > 0 ? ne : K; if (Mt(de), de.length > 0 && !z) {
     const Ee = de.find(qe => qe.lang.includes("tr") && (qe.name.includes("Tolga") || qe.name.includes("Ahmet") || qe.name.includes("Male")));
     O(Ee ? Ee.voiceURI : de[0].voiceURI);
-} }; C(); const L = setInterval(C, 800); return () => clearInterval(L); }, [z]), P.useEffect(() => { Vg.mode = z === "google" || (z || "").startsWith("edge:") ? "audio" : "system", Vg.voice = Vg.mode === "audio" ? z : "google", Vg.mode === "system" && z && be.setVoice(z); try {
+} }; C(); const L = setInterval(C, 800); return () => clearInterval(L); }, [z]), P.useEffect(() => { Vg.mode = /^(google$|edge:|eleven:|openai:)/.test(z || "") ? "audio" : "system", Vg.voice = Vg.mode === "audio" ? z : "google", Vg.mode === "system" && z && be.setVoice(z); try {
     localStorage.setItem("aivs_voice", z);
 }
 catch { } }, [z]), P.useEffect(() => { be.rate = w, Vg.rate = Math.round(w * 100) / 100; }, [w]), P.useEffect(() => { if (!Fi.current || e !== "multiScene")
@@ -6238,7 +6601,7 @@ P.useEffect(() => { if (v.length === 0)
 catch (L) {
     console.warn("Otomatik kayıt yapılamadı:", L);
 } }, 800); return () => clearTimeout(C); }, [v, n, i, a, u, h, y]);
-P.useEffect(() => { if (v.length === 0)
+P.useEffect(() => { if (v.length === 0 || /^(eleven|openai):/.test(z || ""))
     return; const vk = K => K.voiceAudio ? "rec:" + K.voiceAudio.length + ":" + K.voiceAudio.slice(-24) : `${Vg.voice}|${Vg.voice === "google" ? 1 : Vg.rate}|${(K.voiceText || K.text || "").trim()}`, todo = v.filter(K => ((K.voiceText || K.text || "").trim() || K.voiceAudio) && K.voiceKey !== vk(K)); if (todo.length === 0)
     return; let alive = !0; const tm = setTimeout(async () => { const res = await mm.measureScenes(todo); if (!alive)
     return; const mp = new Map; todo.forEach((K, de) => mp.set(K.id, { k: vk(K), d: res[de] })), p(prev => prev.map(K => { const r0 = mp.get(K.id); return !r0 || vk(K) !== r0.k ? K : r0.d ? { ...K, voiceKey: r0.k, voiceDuration: r0.d, duration: Math.max(K.duration || 10, Math.ceil((r0.d + .8) * 2) / 2) } : { ...K, voiceKey: r0.k, voiceDuration: null }; })); }, 700); return () => { alive = !1, clearTimeout(tm); }; }, [v, z, w]);
@@ -6354,5 +6717,5 @@ catch (L) {
 }
 finally {
     $(!1);
-} }; return o.jsxs("div", { className: "app-container", children: [o.jsx(Kp, { appMode: e, setAppMode: t, aspectRatio: i, setAspectRatio: l, onExport: Jc, isExporting: b, exportProgress: X, scenesCount: v.length, onLoadMalazgirtProject: as, onLoadFatihProject: Qc, onLoadSaladinProject: Zc, activeProject: n, onOpenPromptStudio: () => { t("multiScene"), H("generator"); }, onSaveProject: saveProject, onOpenProject: openProject, onFitDurations: fitDurations, isFitting: fitBusy, onOpenTools: () => setToolsOpen(!0) }), o.jsx(StudioTools, { open: toolsOpen, onClose: () => setToolsOpen(!1), scenes: v, aspect: i, project: n, currentIndex: c, onGenerate: (C, L, ne) => Xc(C, L, ne), onPreviewIntro: previewIntro, onApplyCaptions: applyCaptions, setBgmTrack: m, outroOn: oOn, outroDur: oDur }), o.jsx("input", { ref: fileRef, type: "file", accept: ".json,application/json", style: { display: "none" }, onChange: onProjectFile }), e === "promptToVideo" && o.jsx(Zp, { onSwitchToMultiScene: () => t("multiScene") }), e === "longVideo" && o.jsx(LongStudio, { onSendToStudio: loadLong }), e === "shortVideo" && o.jsx(ShortStudio, { onSendToStudio: loadLong }), savedInfo && o.jsxs("div", { className: "sx-toast", children: [o.jsxs("div", { children: [o.jsx("strong", { children: "✓ Video kaydedildi" }), o.jsx("div", { className: "sx-hint", style: { wordBreak: "break-all" }, children: savedInfo })] }), o.jsxs("div", { style: { display: "flex", gap: 6 }, children: [o.jsx("button", { type: "button", className: "btn btn-primary btn-sm", onClick: () => fetch("/api/reveal?p=" + encodeURIComponent(savedInfo), { method: "POST" }), children: "📂 Klasörde Göster" }), o.jsx("button", { type: "button", className: "btn btn-secondary btn-sm", onClick: () => setSavedInfo(""), children: "✕" })] })] }), e === "multiScene" && lay === "factory" && o.jsxs(o.Fragment, { children: [o.jsx(FactoryView, { scenes: v, currentIndex: c, onSelect: fs, onUpdate: ss, onSetScenes: p, onAdd: us, onDelete: cs, onPreviewTTS: os, onGenerate: (C, L, ne) => Xc(C, L, ne), isGenerating: T, genProgress: A, genStatus: te, canvasRef: Fi, aspect: i, setAspect: l, isPlaying: N, onTogglePlay: qc, onReset: Ot, time: g, totalDuration: ds, voice: z, setVoice: O, rate: w, setRate: k, subsOn: a, setSubsOn: s, subStyle: u, setSubStyle: d, bgm: h, setBgm: m, bgmVol: y, setBgmVol: S, outroOn: oOn, setOutroOn: setOOn, onExport: Jc, isExporting: b, exportProgress: X, onFit: fitDurations, isFitting: fitBusy, setLayout: setLay }), o.jsx(rm, { isOpen: Ne, progress: X, downloadUrl: je == null ? void 0 : je.url, filename: je == null ? void 0 : je.filename, onClose: () => Lt(!1) })] }), e === "multiScene" && lay !== "factory" && o.jsxs(o.Fragment, { children: [o.jsx("button", { type: "button", className: "fx-switch-btn", onClick: () => setLay("factory"), title: "3D Video Fabrikası görünümü", children: "🏭 3D Fabrika" }), o.jsxs("main", { className: "studio-main", children: [o.jsx(qp, { scenes: v, currentSceneIndex: c, onSelectScene: fs, onUpdateScene: ss, onAddScene: us, onDeleteScene: cs, onRegenerateSceneImage: Hi, onPreviewSceneTTS: os, onGenerateFromRawPrompt: Xc, isGenerating: T, generationProgress: A, generationStatusText: te, activeTab: D, setActiveTab: H }), o.jsx(Jp, { canvasRef: Fi, aspectRatio: i, isPlaying: N, onTogglePlay: qc, onReset: Ot, currentTime: g, totalDuration: ds, currentSceneIndex: c, totalScenes: v.length }), o.jsx(nm, { subtitlesEnabled: a, setSubtitlesEnabled: s, subtitleStyle: u, setSubtitleStyle: d, bgmTrack: h, setBgmTrack: m, bgmVolume: y, setBgmVolume: S, speechRate: w, setSpeechRate: k, currentScene: v[c], currentSceneIndex: c, onUpdateScene: ss, onRegenerateSceneImage: Hi, onPreviewSceneTTS: os, availableVoices: ce, selectedVoiceURI: z, setSelectedVoiceURI: O, outroOn: oOn, setOutroOn: setOOn, outroText: oText, setOutroText: setOText, onPreviewOutro: previewOutro, outroDefault: OUTRO_DEFAULT })] }), o.jsx(em, { scenes: v, currentSceneIndex: c, onSelectScene: fs, onRegenerateSceneImage: Hi, onAddScene: us, onDeleteScene: cs, totalDuration: ds }), o.jsx(rm, { isOpen: Ne, progress: X, downloadUrl: je == null ? void 0 : je.url, filename: je == null ? void 0 : je.filename, onClose: () => Lt(!1) })] })] }); }
+} }; return o.jsxs("div", { className: "app-container", children: [o.jsx(Kp, { appMode: e, setAppMode: t, aspectRatio: i, setAspectRatio: l, onExport: Jc, isExporting: b, exportProgress: X, scenesCount: v.length, onLoadMalazgirtProject: as, onLoadFatihProject: Qc, onLoadSaladinProject: Zc, activeProject: n, onOpenPromptStudio: () => { t("multiScene"), H("generator"); }, onSaveProject: saveProject, onOpenProject: openProject, onFitDurations: fitDurations, isFitting: fitBusy, onOpenTools: () => setToolsOpen(!0) }), o.jsx(StudioTools, { open: toolsOpen, onClose: () => setToolsOpen(!1), scenes: v, aspect: i, project: n, currentIndex: c, onGenerate: (C, L, ne) => Xc(C, L, ne), onPreviewIntro: previewIntro, onApplyCaptions: applyCaptions, setBgmTrack: m, outroOn: oOn, outroDur: oDur }), o.jsx("input", { ref: fileRef, type: "file", accept: ".json,application/json", style: { display: "none" }, onChange: onProjectFile }), e === "promptToVideo" && o.jsx(Zp, { onSwitchToMultiScene: () => t("multiScene") }), e === "longVideo" && o.jsx(LongStudio, { onSendToStudio: loadLong }), e === "shortVideo" && o.jsx(ShortStudio, { onSendToStudio: loadLong }), savedInfo && o.jsxs("div", { className: "sx-toast", children: [o.jsxs("div", { children: [o.jsx("strong", { children: "✓ Video kaydedildi" }), o.jsx("div", { className: "sx-hint", style: { wordBreak: "break-all" }, children: savedInfo })] }), o.jsxs("div", { style: { display: "flex", gap: 6 }, children: [o.jsx("button", { type: "button", className: "btn btn-primary btn-sm", onClick: () => fetch("/api/reveal?p=" + encodeURIComponent(savedInfo), { method: "POST" }), children: "📂 Klasörde Göster" }), o.jsx("button", { type: "button", className: "btn btn-secondary btn-sm", onClick: () => setSavedInfo(""), children: "✕" })] })] }), e === "multiScene" && lay === "factory" && o.jsxs(o.Fragment, { children: [o.jsx(FactoryView, { scenes: v, currentIndex: c, onSelect: fs, onUpdate: ss, onSetScenes: p, onAdd: us, onDelete: cs, onPreviewTTS: os, onGenerate: (C, L, ne) => Xc(C, L, ne), isGenerating: T, genProgress: A, genStatus: te, canvasRef: Fi, aspect: i, setAspect: l, isPlaying: N, onTogglePlay: qc, onReset: Ot, time: g, totalDuration: ds, voice: z, setVoice: O, rate: w, setRate: k, subsOn: a, setSubsOn: s, subStyle: u, setSubStyle: d, bgm: h, setBgm: m, bgmVol: y, setBgmVol: S, outroOn: oOn, setOutroOn: setOOn, onExport: Jc, isExporting: b, exportProgress: X, onFit: fitDurations, isFitting: fitBusy, setLayout: setLay, onPatchById: (id, ix, L) => { p(C => C.map((K, q) => (id ? K.id === id : q === ix) ? { ...K, ...L } : K)); const sc = vRef.current.find((K, q) => id ? K.id === id : q === ix); U.current && sc && (L.imageUrl || L.videoUrl) && U.current.preloadScenes([{ ...sc, ...L }]).then(() => { const cs0 = vRef.current[cRef.current]; U.current && cs0 && U.current.renderFrame(cs0, 0, cRef.current); }); }, onLoadScenes: (C, L) => { C.length ? loadLong(C, { aspect: L }) : (Ot(), l(L), p([]), f(0), r("custom")); } }), o.jsx(rm, { isOpen: Ne, progress: X, downloadUrl: je == null ? void 0 : je.url, filename: je == null ? void 0 : je.filename, onClose: () => Lt(!1) })] }), e === "multiScene" && lay !== "factory" && o.jsxs(o.Fragment, { children: [o.jsx("button", { type: "button", className: "fx-switch-btn", onClick: () => setLay("factory"), title: "3D Video Fabrikası görünümü", children: "🏭 3D Fabrika" }), o.jsxs("main", { className: "studio-main", children: [o.jsx(qp, { scenes: v, currentSceneIndex: c, onSelectScene: fs, onUpdateScene: ss, onAddScene: us, onDeleteScene: cs, onRegenerateSceneImage: Hi, onPreviewSceneTTS: os, onGenerateFromRawPrompt: Xc, isGenerating: T, generationProgress: A, generationStatusText: te, activeTab: D, setActiveTab: H }), o.jsx(Jp, { canvasRef: Fi, aspectRatio: i, isPlaying: N, onTogglePlay: qc, onReset: Ot, currentTime: g, totalDuration: ds, currentSceneIndex: c, totalScenes: v.length }), o.jsx(nm, { subtitlesEnabled: a, setSubtitlesEnabled: s, subtitleStyle: u, setSubtitleStyle: d, bgmTrack: h, setBgmTrack: m, bgmVolume: y, setBgmVolume: S, speechRate: w, setSpeechRate: k, currentScene: v[c], currentSceneIndex: c, onUpdateScene: ss, onRegenerateSceneImage: Hi, onPreviewSceneTTS: os, availableVoices: ce, selectedVoiceURI: z, setSelectedVoiceURI: O, outroOn: oOn, setOutroOn: setOOn, outroText: oText, setOutroText: setOText, onPreviewOutro: previewOutro, outroDefault: OUTRO_DEFAULT })] }), o.jsx(em, { scenes: v, currentSceneIndex: c, onSelectScene: fs, onRegenerateSceneImage: Hi, onAddScene: us, onDeleteScene: cs, totalDuration: ds }), o.jsx(rm, { isOpen: Ne, progress: X, downloadUrl: je == null ? void 0 : je.url, filename: je == null ? void 0 : je.filename, onClose: () => Lt(!1) })] })] }); }
 hl.createRoot(document.getElementById("root")).render(o.jsx(Vo.StrictMode, { children: o.jsx(vm, {}) }));

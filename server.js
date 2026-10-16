@@ -248,6 +248,98 @@ function checkAuth(req, res) {
 const EXT_HOSTS = ['replicate.com', 'replicate.delivery', 'fal.run', 'fal.media', 'fal.ai'];
 const allowedExt = (h) => EXT_HOSTS.some((d) => h === d || h.endsWith('.' + d));
 
+
+// ---------------------------------------------------------------- v2.0: AI connections (proxy + media store)
+const EXT_ALLOWED = ['api.replicate.com', 'replicate.delivery', 'replicate.com', 'fal.run', 'fal.media', 'fal.ai', 'api.openai.com', 'generativelanguage.googleapis.com', 'api.anthropic.com', 'api.groq.com', 'openrouter.ai', 'api.elevenlabs.io', 'oaidalleapiprodscus.blob.core.windows.net', 'storage.googleapis.com'];
+const extAllowed = (h) => EXT_ALLOWED.some((d) => h === d || h.endsWith('.' + d));
+const EXT_HEADERS = ['authorization', 'content-type', 'prefer', 'x-api-key', 'anthropic-version', 'xi-api-key', 'x-goog-api-key', 'accept', 'http-referer', 'x-title'];
+function readRawLimit(req, limit) {
+  return new Promise((resolve, reject) => {
+    const parts = []; let n = 0;
+    req.on('data', (c) => { n += c.length; if (n > limit) { reject(new Error('İstek çok büyük')); req.destroy(); } else parts.push(c); });
+    req.on('end', () => resolve(Buffer.concat(parts)));
+    req.on('error', reject);
+  });
+}
+let mediaDir = null;
+function getMediaDir() {
+  if (!mediaDir) { mediaDir = path.join(os.tmpdir(), 'aivs-media'); fs.mkdirSync(mediaDir, { recursive: true }); }
+  return mediaDir;
+}
+const MEDIA_TYPES = { jpg: 'image/jpeg', png: 'image/png', webp: 'image/webp', mp4: 'video/mp4', webm: 'video/webm', mp3: 'audio/mpeg', wav: 'audio/wav' };
+function storeMedia(buf, ext) {
+  ext = MEDIA_TYPES[ext] ? ext : 'bin';
+  const name = crypto.createHash('sha1').update(buf).digest('hex').slice(0, 24) + '.' + ext;
+  const file = path.join(getMediaDir(), name);
+  if (!fs.existsSync(file)) fs.writeFileSync(file, buf);
+  return '/api/media/' + name;
+}
+function extFromType(t, url) {
+  t = (t || '').toLowerCase();
+  if (t.includes('mp4')) return 'mp4'; if (t.includes('webm')) return 'webm'; if (t.includes('png')) return 'png'; if (t.includes('webp')) return 'webp';
+  if (t.includes('jpeg') || t.includes('jpg')) return 'jpg'; if (t.includes('mpeg') || t.includes('mp3')) return 'mp3'; if (t.includes('wav')) return 'wav';
+  const m = /\.(mp4|webm|png|webp|jpe?g|mp3|wav)(\?|$)/i.exec(url || ''); return m ? m[1].toLowerCase().replace('jpeg', 'jpg') : 'bin';
+}
+async function handleAiRoutes(req, res, pathname, reqUrl) {
+  if (pathname === '/api/ext') {
+    let target;
+    try { target = new URL(reqUrl.searchParams.get('u') || ''); } catch { res.statusCode = 400; res.end('Geçersiz adres'); return true; }
+    if (target.protocol !== 'https:' || !extAllowed(target.hostname)) { res.statusCode = 403; res.end('İzin verilmeyen adres: ' + target.hostname); return true; }
+    try {
+      const headers = {};
+      for (const h of EXT_HEADERS) if (req.headers[h]) headers[h] = req.headers[h];
+      const body = req.method === 'GET' || req.method === 'HEAD' ? undefined : await readRawLimit(req, 40 * 1024 * 1024);
+      const r = await fetchWithTimeout(target.href, { method: req.method, headers, body }, 600000);
+      res.statusCode = r.status;
+      res.setHeader('Content-Type', r.headers.get('content-type') || 'application/octet-stream');
+      res.end(Buffer.from(await r.arrayBuffer()));
+    } catch (err) {
+      res.statusCode = 502;
+      res.setHeader('Content-Type', 'application/json; charset=UTF-8');
+      res.end(JSON.stringify({ detail: 'Bağlantı hatası: ' + err.message }));
+    }
+    return true;
+  }
+  if (pathname === '/api/store' && req.method === 'POST') {
+    try {
+      const buf = await readRawLimit(req, 300 * 1024 * 1024);
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify({ url: storeMedia(buf, String(reqUrl.searchParams.get('ext') || 'bin').toLowerCase()) }));
+    } catch (err) { res.statusCode = 500; res.end(JSON.stringify({ error: err.message })); }
+    return true;
+  }
+  if (pathname === '/api/cache') {
+    let target;
+    try { target = new URL(reqUrl.searchParams.get('u') || ''); } catch { res.statusCode = 400; res.end('{}'); return true; }
+    if (target.protocol !== 'https:' || !extAllowed(target.hostname)) { res.statusCode = 403; res.end('{"error":"izin yok"}'); return true; }
+    try {
+      const r = await fetchWithTimeout(target.href, {}, 600000);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const buf = Buffer.from(await r.arrayBuffer());
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify({ url: storeMedia(buf, extFromType(r.headers.get('content-type'), target.pathname)) }));
+    } catch (err) { res.statusCode = 502; res.end(JSON.stringify({ error: err.message })); }
+    return true;
+  }
+  if (pathname.startsWith('/api/media/')) {
+    const name = path.basename(pathname);
+    const file = path.join(getMediaDir(), name);
+    if (!/^[a-f0-9]{24}\.\w+$/.test(name) || !fs.existsSync(file)) { res.statusCode = 404; res.end('Dosya bulunamadı'); return true; }
+    const size = fs.statSync(file).size, ext = name.split('.').pop();
+    res.setHeader('Content-Type', MEDIA_TYPES[ext] || 'application/octet-stream');
+    res.setHeader('Accept-Ranges', 'bytes');
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    const range = /bytes=(\d*)-(\d*)/.exec(req.headers.range || '');
+    if (range) {
+      const start = range[1] ? parseInt(range[1], 10) : 0, end = range[2] ? Math.min(size - 1, parseInt(range[2], 10)) : size - 1;
+      res.statusCode = 206; res.setHeader('Content-Range', `bytes ${start}-${end}/${size}`); res.setHeader('Content-Length', end - start + 1);
+      fs.createReadStream(file, { start, end }).pipe(res);
+    } else { res.setHeader('Content-Length', size); fs.createReadStream(file).pipe(res); }
+    return true;
+  }
+  return false;
+}
+
 // ---------------------------------------------------------------- server
 const server = http.createServer(async (req, res) => {
   try {
@@ -258,7 +350,7 @@ const server = http.createServer(async (req, res) => {
     if (!checkAuth(req, res)) return;
 
     const ip = clientIp(req);
-    const limits = { '/api/llm': 20, '/api/img': 60, '/api/tts': 150, '/api/ext': 120 };
+    const limits = { '/api/llm': 20, '/api/img': 60, '/api/tts': 150, '/api/ext': 240, '/api/store': 120, '/api/cache': 120 };
     if (limits[pathname] && rateLimited(ip, pathname, limits[pathname])) {
       res.statusCode = 429;
       res.setHeader('Retry-After', '30');
@@ -279,24 +371,7 @@ const server = http.createServer(async (req, res) => {
       }
     }
 
-    // Replicate / Fal video API'leri tarayıcıdan doğrudan çağrılamıyor (CORS) -> aracı
-    if (pathname === '/api/ext') {
-      let target;
-      try { target = new URL(reqUrl.searchParams.get('u') || ''); } catch { res.statusCode = 400; return res.end('Geçersiz adres'); }
-      if (target.protocol !== 'https:' || !allowedExt(target.hostname)) { res.statusCode = 403; return res.end('İzin verilmeyen adres'); }
-      try {
-        const headers = {};
-        for (const h of ['authorization', 'content-type', 'prefer']) if (req.headers[h]) headers[h] = req.headers[h];
-        const body = req.method === 'GET' || req.method === 'HEAD' ? undefined : await readBody(req, 2000000);
-        const r = await fetchWithTimeout(target.href, { method: req.method, headers, body }, 600000);
-        res.statusCode = r.status;
-        res.setHeader('Content-Type', r.headers.get('content-type') || 'application/octet-stream');
-        return res.end(Buffer.from(await r.arrayBuffer()));
-      } catch (err) {
-        res.statusCode = 502;
-        return res.end(JSON.stringify({ detail: 'Bağlantı hatası: ' + err.message }));
-      }
-    }
+    if (await handleAiRoutes(req, res, pathname, reqUrl)) return;
 
     // Web sürümünde video sunucuya değil, doğrudan tarayıcıdan indirilir
     if (pathname.startsWith('/api/rec/') || pathname === '/api/reveal') {
