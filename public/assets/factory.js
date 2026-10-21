@@ -265,7 +265,7 @@ export function createFactory(host, opts = {}) {
     }
     // YAPAY ZEKÂ — server rack with blinking modules
     {
-      const g = new THREE.Group(); g.position.set(-(L / 2 + 0.9), 0, -4.4); g.rotation.y = 0.25; world.add(g);
+      const g = new THREE.Group(); g.position.set(-(L / 2 + 2.6), 0, -4.0); g.rotation.y = 0.3; world.add(g);
       stationBase(g, 2.4, 1.6);
       box(g, 1.7, 2.3, 1.0, 0, 1.35, 0, M.dark, 0.08);
       box(g, 1.78, 0.08, 1.06, 0, 2.52, 0, M.edge, 0.03);
@@ -280,6 +280,21 @@ export function createFactory(host, opts = {}) {
       tagPick(g, { kind: 'ai', index: 0 });
       stations.ai = { group: g, leds, core };
       addLabel(g, 'YAPAY ZEKÂ', 'Servisleri bağla · kalite', 'ai');
+    }
+    // YAYIN — broadcast antenna with signal rings
+    {
+      const g = new THREE.Group(); g.position.set(L / 2 + 2.6, 0, -4.0); g.rotation.y = -0.3; world.add(g);
+      stationBase(g, 2.2, 1.6);
+      box(g, 1.2, 0.5, 0.9, 0, 0.42, 0, M.body, 0.06);
+      for (const sx of [-1, 1]) { const leg = cyl(g, 0.04, 2.3, sx * 0.35, 1.55, 0, M.chrome, 0.04, 8); leg.rotation.z = sx * -0.14; }
+      for (let k = 0; k < 4; k++) box(g, 0.62 - k * 0.12, 0.03, 0.03, 0, 0.95 + k * 0.5, 0, M.edge, 0.01);
+      const dish = new THREE.Mesh(new THREE.SphereGeometry(0.45, 28, 14, 0, Math.PI * 2, 0, Math.PI * 0.32), M.ivory); dish.position.set(0, 2.55, 0.1); dish.rotation.x = Math.PI * 0.62; dish.castShadow = true; g.add(dish);
+      const tip = ball(g, 0.08, 0, 2.95, 0, M.light);
+      const rings = [];
+      for (let k = 0; k < 3; k++) { const r = new THREE.Mesh(new THREE.TorusGeometry(0.35 + k * 0.25, 0.012, 6, 40), new THREE.MeshBasicMaterial({ color: AMBER, transparent: true, opacity: 0.6 })); r.position.set(0, 2.95, 0); g.add(r); rings.push(r); }
+      tagPick(g, { kind: 'publish', index: 0 });
+      stations.publish = { group: g, rings, tip };
+      addLabel(g, 'YAYIN', 'Başlık · açıklama · takvim', 'publish');
     }
     // MONTAJ — big monitor + reel
     {
@@ -398,7 +413,7 @@ export function createFactory(host, opts = {}) {
   const tipText = (h) => {
     if (!h) return '';
     if (h.kind === 'scene') { const s = state.scenes[h.index] || {}; return `<b>Sahne ${h.index + 1}</b> · ${(+s.duration || 10)} sn<p>${(s.voiceText || s.title || '').slice(0, 110)}</p><small>Tıkla: prompt, süre ve resmi düzenle</small>`; }
-    return { script: '<b>Senaryo</b><p>Videonun konusunu ya da senaryosunu yaz, sahneleri üret.</p>', voice: '<b>Ses</b><p>Seslendirici, konuşma hızı ve altyazı ayarları.</p>', music: '<b>Müzik</b><p>Fon müziği ve ses seviyesi.</p>', ai: '<b>Yapay Zekâ</b><p>Gemini, Claude, OpenAI, ElevenLabs, fal.ai, Replicate bağlantıları ve kalite ayarları.</p>', export: '<b>Montaj</b><p>Önizlemeyi oynat, videoyu oluştur ve indir.</p>' }[h.kind] || '';
+    return { script: '<b>Senaryo</b><p>Videonun konusunu ya da senaryosunu yaz, sahneleri üret.</p>', voice: '<b>Ses</b><p>Seslendirici, konuşma hızı ve altyazı ayarları.</p>', music: '<b>Müzik</b><p>Fon müziği ve ses seviyesi.</p>', publish: '<b>Yayın</b><p>Puanlı başlık önerileri, açıklama, etiketler, TikTok/Instagram metni ve yayın saati.</p>', ai: '<b>Yapay Zekâ</b><p>Gemini, Claude, OpenAI, ElevenLabs, fal.ai, Replicate bağlantıları ve kalite ayarları.</p>', export: '<b>Montaj</b><p>Önizlemeyi oynat, videoyu oluştur ve indir.</p>' }[h.kind] || '';
   };
   function setHover(h, ev) {
     const same = h && hover && h.kind === hover.kind && h.index === hover.index;
@@ -444,6 +459,7 @@ export function createFactory(host, opts = {}) {
       if (stations.export) { stations.export.reel.rotation.y += dt * (state.busy || state.playing ? 2.6 : 0.2); stations.export.rec.material = (state.busy && Math.sin(t * 6) > 0) ? M.light : (state.busy ? M.dark : M.light); }
       if (stations.voice) stations.voice.bars.forEach((b, k) => { const v = state.playing ? 0.3 + Math.abs(Math.sin(t * (3 + k) + k)) * 1.3 : 0.25 + Math.sin(t * 1.4 + k) * 0.05; b.scale.y = v; b.position.y = 0.2 + 0.15 * v; });
       if (stations.ai) { stations.ai.leds.forEach((l, k) => { l.material = ((Math.sin(t * (2 + (k % 5)) + k * 1.7) > 0.3) || (state.busy && Math.sin(t * 9 + k) > 0)) ? (k % 3 ? M.green : M.light) : M.dark; }); stations.ai.core.scale.setScalar(1 + Math.sin(t * 3) * 0.08); }
+      if (stations.publish) stations.publish.rings.forEach((r, k) => { const q = ((t * 0.6 + k / 3) % 1); r.scale.setScalar(0.6 + q * 1.4); r.material.opacity = 0.7 * (1 - q); r.rotation.y = t * 0.4; });
       if (stations.script) stations.script.led.material = (Math.sin(t * 2.2) > 0 || state.busy) ? M.light : M.dark;
       plates.forEach((p, k) => {
         const sel = k === state.current, hov = hover && hover.kind === 'scene' && hover.index === k;
